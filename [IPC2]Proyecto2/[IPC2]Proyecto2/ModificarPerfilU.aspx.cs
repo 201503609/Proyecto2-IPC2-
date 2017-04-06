@@ -19,7 +19,7 @@ namespace _IPC2_Proyecto2
         {
             if (Session["rol"] != null || Session["pass"] != null || Session["usuario"] != null)
             {
-
+                
             }
             else
             {
@@ -39,12 +39,13 @@ namespace _IPC2_Proyecto2
             fecha = TextBox5.Text;
             direccion = TextBox6.Text;
             telefono = Int32.Parse(TextBox7.Text);
-
             u.modificarUsuario(correo, contraseña, nombre, apellido, fecha, direccion, telefono, Session["usuario"].ToString());
+            Response.Redirect("ModificarPerfilU.aspx");
         }
 
         private void cargaInfo()
         {
+            Thread.Sleep(1000);
             carga = u.obtenerDatos(Session["usuario"].ToString());
             int i = 0;
             foreach (string item in carga)
@@ -77,5 +78,9 @@ namespace _IPC2_Proyecto2
             }
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            cargaInfo();
+        }
     }
 }
