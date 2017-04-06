@@ -13,7 +13,15 @@ namespace _IPC2_Proyecto2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["rol"] != null || Session["pass"] != null || Session["usuario"] != null)
+            {
 
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos validos para entrar");
+                Response.Redirect("Inicio.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -57,7 +65,37 @@ namespace _IPC2_Proyecto2
         {
             Usuario u = new Usuario();
             string user = DropDownList1.Text;
-            u.modificarUsuario(txtCorreo.Text,txtContra.Text,txtNombre.Text,txtApellido.Text,txtFecha.Text,txtDireccion.Text,Int32.Parse(txtTelefono.Text),user);
+            int rol = Int32.Parse(Session["Rol"].ToString());
+            int rol2 = Int32.Parse(DropDownList1.Text);
+
+            if (rol2 == 1)
+            {
+                MessageBox.Show("No se pueden modificar usuarios de este tipo");
+            }
+            else if (rol2 == 2)
+            {
+                if (rol == 1)
+                {
+                    u.modificarUsuario(txtCorreo.Text, txtContra.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), user);
+                    Response.Redirect("ModificarU.aspx");
+                }
+                else
+                {
+                    MessageBox.Show("Unicamente el Super usuario puede modificar usuarios de este tipo");
+                }
+            }
+            else if (rol2 == 3 || rol2 == 4 || rol2 == 5)
+            {
+                if (rol == 1 || rol == 2)
+                {
+                    u.modificarUsuario(txtCorreo.Text, txtContra.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), user);
+                    Response.Redirect("ModificarU.aspx");
+                }
+                else
+                {
+                    MessageBox.Show("Unicamente el Super usuario y Administrador(Gerente) pueden modificar usuarios de este tipo");
+                }
+            }
         }
     }
 }

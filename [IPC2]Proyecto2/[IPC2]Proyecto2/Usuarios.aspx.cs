@@ -12,15 +12,23 @@ namespace _IPC2_Proyecto2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["rol"] != null || Session["pass"] != null || Session["usuario"] != null)
-            //{
-            //    MessageBox.Show("Tiene permisos validos para entrar");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No tiene permisos validos para entrar");
-            //    Response.Redirect("Inicio.aspx");
-            //}
+            if (Session["rol"] != null || Session["pass"] != null || Session["usuario"] != null)
+            {
+                int rol = Int32.Parse(Session["rol"].ToString());
+                if (rol == 3 || rol ==4 || rol == 5)
+                {
+                    btnCrear.Visible= false;
+                    btnEliminar.Visible = false;
+                    btnModificar.Visible = false;
+                    btnRol.Visible = false;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos validos para entrar");
+                Response.Redirect("Inicio.aspx");
+            }
         }
 
         //Cerrar Sesión:
@@ -56,6 +64,7 @@ namespace _IPC2_Proyecto2
         {
             Response.Redirect("CambiarRol.aspx");
         }
+
         //ModificarPerfil
         protected void Button7_Click1(object sender, EventArgs e)
         {
