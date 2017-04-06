@@ -30,8 +30,7 @@
 
 
         <div class="6u$ 12u$(3)">
-            <asp:GridView ID="GridView1" runat="server">
-            </asp:GridView>
+            <asp:Button ID="Button2" runat="server" Text="Cargar información" OnClick="Button2_Click" />
         </div>
 
         <div class="6u$ 12u$(3)">
@@ -57,7 +56,7 @@
         <asp:TextBox placeholder="telefono" ID="TextBox7" runat="server"></asp:TextBox>
             <br />
             <br />
-            <asp:Button class="button alt fit small" ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+            <asp:Button class="button alt fit small" ID="Button1" runat="server" OnClick="Button1_Click" Text="Modificar" />
             <br />
         </div>
     </form>
