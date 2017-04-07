@@ -257,5 +257,46 @@ namespace _IPC2_Proyecto2
 
 
         }
+        //Ya funciona
+        public string ObtenerCorreo(int id)
+        {
+            try
+            {
+                Console.WriteLine(usuario);
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("select * from Usuarios WHERE idUSuario='" + id + "'", cn.getSqlConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    string correo;
+                    correo = Convert.ToString(dr["correo"]);
+                    return correo;
+                }
+                else
+                {
+                    return "";
+                }
+                cn.finalizar();
+                dr.Close();
+
+                return "";
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + sqe.ToString());
+                return "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + ex.ToString());
+                return "";
+            }
+            finally
+            {
+                cn.finalizar();
+            }
+
+
+        }
     }
 }

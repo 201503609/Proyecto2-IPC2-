@@ -20,6 +20,7 @@ namespace _IPC2_Proyecto2
         SqlDataAdapter sda = null;
         DataTable tblData = new DataTable();
 
+        //Ya funciona
         public void crearCaso(string nombre, string fechaLim, int creador, int proyecto, int avance, string descripcion, int editor, int estado, int situacion, int categoria, int prioridad, string fechaEntrega)
         {
             try
@@ -50,43 +51,43 @@ namespace _IPC2_Proyecto2
                 MessageBox.Show("Ocurrio el siguiente problema al crear el caso: " + exe.ToString());
             }
         }
-
-        public void crearHistorial(int caso, string descripcion, string editor, string estado, int situacion, string categoria, string prioridad, string fechaEntrega,string cambioPor)
+        //Ya funciona
+        public void crearHistorial(int caso, string descripcion, string editor, string estado, string situacion, string categoria, string prioridad, string fechaEntrega, string cambioPor)
         {
             try
             {
                 cn = Conexion.conectar();
                 cmd = new SqlCommand("INSERT INTO Historial VALUES(@caso,@descripcionCaso,@editadoPor, @estado,@situacion,@categoria,@prioridad,@fechaEntrega,@cambioPor)", cn.getSqlConnection());
                 cmd.Parameters.AddWithValue("@caso", caso);
-                cmd.Parameters.AddWithValue("@descripcion", descripcion);
+                cmd.Parameters.AddWithValue("@descripcionCaso", descripcion);
                 cmd.Parameters.AddWithValue("@editadoPor", editor);
                 cmd.Parameters.AddWithValue("@estado", estado);
                 cmd.Parameters.AddWithValue("@situacion", situacion);
                 cmd.Parameters.AddWithValue("@categoria", categoria);
                 cmd.Parameters.AddWithValue("@prioridad", prioridad);
                 cmd.Parameters.AddWithValue("@fechaEntrega", fechaEntrega);
-                cmd.Parameters.AddWithValue("@cambioPor",cambioPor);
+                cmd.Parameters.AddWithValue("@cambioPor", cambioPor);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se agrego al historial del caso");
             }
             catch (SqlException sqe)
             {
-                MessageBox.Show("Ocurrio el siguiente problema al crear el caso: " + sqe.ToString());
+                MessageBox.Show("Ocurrio el siguiente problema al crear historial de el caso: " + sqe.ToString());
             }
             catch (Exception exe)
             {
-                MessageBox.Show("Ocurrio el siguiente problema al crear el caso: " + exe.ToString());
+                MessageBox.Show("Ocurrio el siguiente problema al crear historial de el caso: " + exe.ToString());
             }
         }
-
-        public void editarCaso(int caso, string descripcion, string editor, string estado, int situacion, string categoria, string prioridad, string fechaEntrega)
+        //Ya funciona
+        public void editarCaso(int caso, string descripcion, int editor, int estado, int situacion, int categoria, int prioridad, string fechaEntrega)
         {
             try
             {
                 cn = Conexion.conectar();
                 cmd = new SqlCommand("UPDATE Caso SET descripcionCaso = @descripcionCaso, editadoPor = @editadoPor, estado = @estado," +
                     " situacion = @situacion, categoria = @categoria, prioridad = @prioridad, fechaEntrega = @fechaEntrega" +
-                    " WHERE caso = @caso", cn.getSqlConnection());
+                    " WHERE idCaso = @caso", cn.getSqlConnection());
                 cmd.Parameters.AddWithValue("@descripcionCaso", descripcion);
                 cmd.Parameters.AddWithValue("@editadoPor", editor);
                 cmd.Parameters.AddWithValue("@estado", estado);
@@ -107,13 +108,13 @@ namespace _IPC2_Proyecto2
                 MessageBox.Show("No se logro modificar el caso por: " + ex.ToString());
             }
         }
-
+        //Ya funciona
         public void AsignarCaso(int caso, int usuario)
         {//UPDATE A CASO
             try
             {
                 cn = Conexion.conectar();
-                cmd = new SqlCommand("UPDATE Caso SET editadoPor = @editadoPor WHERE caso = @caso", cn.getSqlConnection());
+                cmd = new SqlCommand("UPDATE Caso SET editadoPor = @editadoPor WHERE idCaso = @caso", cn.getSqlConnection());
                 cmd.Parameters.AddWithValue("@editadoPor", usuario);
                 cmd.Parameters.AddWithValue("@caso", caso);
                 cmd.ExecuteNonQuery();
@@ -128,18 +129,18 @@ namespace _IPC2_Proyecto2
                 MessageBox.Show("No se logro asignar el caso por: " + ex.ToString());
             }
         }
-
+        //Ya funciona
         public void resolverCaso(int caso, int situacion)
         {//UPDATE A CASO EN EL ESTADO y LUEGO A LA SITUACION, INSERT A HISTORIAL
             try
             {
                 cn = Conexion.conectar();
-                cmd = new SqlCommand("UPDATE Caso SET estado = @estado, situacion = @situacion WHERE caso = @caso", cn.getSqlConnection());
-                cmd.Parameters.AddWithValue("@estado", "Resuelto");
+                cmd = new SqlCommand("UPDATE Caso SET estado = @estado, situacion = @situacion WHERE idCaso = @caso", cn.getSqlConnection());
+                cmd.Parameters.AddWithValue("@estado", 2);
                 cmd.Parameters.AddWithValue("@situacion", situacion);
                 cmd.Parameters.AddWithValue("@caso", caso);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Se logro resolver el caso: ");
+                MessageBox.Show("Se logro resolver el caso");
             }
             catch (SqlException sqe)
             {
@@ -150,17 +151,17 @@ namespace _IPC2_Proyecto2
                 MessageBox.Show("No se logro resolver el caso por: " + ex.ToString());
             }
         }
-
+        //Ya funciona
         public void cambiarSituacion(int caso, int situacion)
         {//UPDATE A CASO EN SITUACION, INSERT A HISTORIAL
             try
             {
                 cn = Conexion.conectar();
-                cmd = new SqlCommand("UPDATE Caso SET situacion = @situacion WHERE caso = @caso", cn.getSqlConnection());
+                cmd = new SqlCommand("UPDATE Caso SET situacion = @situacion WHERE idCaso = @caso", cn.getSqlConnection());
                 cmd.Parameters.AddWithValue("@situacion", situacion);
                 cmd.Parameters.AddWithValue("@caso", caso);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Se logro cambiar la situacion del caso: ");
+                MessageBox.Show("Se logro cambiar la situacion del caso");
             }
             catch (SqlException sqe)
             {
@@ -171,18 +172,18 @@ namespace _IPC2_Proyecto2
                 MessageBox.Show("No se logro  cambiar la situacion del caso " + ex.ToString());
             }
         }
-
+        //Ya funciona
         public void reactivarCaso(int caso, int situacion)
         {//UPDATE A CASO EN EL ESTADO y LUEGO A LA SITUACION, INSERT A HISTORIAL
             try
             {
                 cn = Conexion.conectar();
-                cmd = new SqlCommand("UPDATE Caso SET estado = @estado, situacion = @situacion WHERE caso = @caso", cn.getSqlConnection());
-                cmd.Parameters.AddWithValue("@estado", "Reactivo");
+                cmd = new SqlCommand("UPDATE Caso SET estado = @estado, situacion = @situacion WHERE idCaso = @caso", cn.getSqlConnection());
+                cmd.Parameters.AddWithValue("@estado", 4);
                 cmd.Parameters.AddWithValue("@situacion", situacion);
                 cmd.Parameters.AddWithValue("@caso", caso);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Se logro reactivar el caso: ");
+                MessageBox.Show("Se logro reactivar el caso");
             }
             catch (SqlException sqe)
             {
@@ -193,17 +194,17 @@ namespace _IPC2_Proyecto2
                 MessageBox.Show("No se logro reactivar el caso por: " + ex.ToString());
             }
         }
-
+        //A probarlo
         public void cerrarCaso(int caso)
         {//UPDATE A CASO EN EL ESTADO y LUEGO A LA SITUACION, INSERT A HISTORIAL
             try
             {
                 cn = Conexion.conectar();
-                cmd = new SqlCommand("UPDATE Caso SET estado = @estado WHERE caso = @caso", cn.getSqlConnection());
-                cmd.Parameters.AddWithValue("@estado", "Cerrado");
+                cmd = new SqlCommand("UPDATE Caso SET estado = @estado WHERE idCaso = @caso", cn.getSqlConnection());
+                cmd.Parameters.AddWithValue("@estado", 3);
                 cmd.Parameters.AddWithValue("@caso", caso);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Se logro cerrar el caso: ");
+                MessageBox.Show("Se logro cerrar el caso");
             }
             catch (SqlException sqe)
             {
@@ -214,7 +215,45 @@ namespace _IPC2_Proyecto2
                 MessageBox.Show("No se logro cerrar el caso por: " + ex.ToString());
             }
         }
+        //Ya funciona
+        public int obtenerIdCaso(string caso)
+        {
+            try
+            {
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("select * from Caso WHERE titulo='" + caso + "'", cn.getSqlConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    string id;
+                    id = Convert.ToString(dr["idCaso"]);
+                    pre = Int32.Parse(id);
+                }
+                else
+                {
+                    return 0;
+                }
+                cn.finalizar();
+                dr.Close();
 
+                return pre;
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + sqe.ToString());
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + ex.ToString());
+                return 0;
+            }
+            finally
+            {
+                cn.finalizar();
+            }
+        }
+        //Ya funciona
         public ArrayList datosCompletosdeCaso(string titulo)
         {
             try
@@ -274,7 +313,7 @@ namespace _IPC2_Proyecto2
                 cn.finalizar();
             }
         }
-
+        //Ya funciona
         public ArrayList datosEditablesdelCaso(string titulo)
         {
             try

@@ -68,8 +68,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CambiarRol.aspx" />
+    <Content Include="CAsignarEditor.aspx" />
     <Content Include="CCrear.aspx" />
+    <Content Include="CEditar.aspx" />
+    <Content Include="CHistorial.aspx" />
+    <Content Include="CReactivar.aspx" />
     <Content Include="CrearU.aspx" />
+    <Content Include="CResolver.aspx" />
+    <Content Include="CSituacion.aspx" />
     <Content Include="EliminarU.aspx" />
     <Content Include="Inicio2.aspx" />
     <Content Include="ModificarPerfilU.aspx" />
@@ -102,6 +108,13 @@
     <Compile Include="CambiarRol.aspx.designer.cs">
       <DependentUpon>CambiarRol.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CAsignarEditor.aspx.cs">
+      <DependentUpon>CAsignarEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CAsignarEditor.aspx.designer.cs">
+      <DependentUpon>CAsignarEditor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Caso.cs" />
     <Compile Include="Casos.aspx.cs">
       <DependentUpon>Casos.aspx</DependentUpon>
@@ -117,13 +130,48 @@
     <Compile Include="CCrear.aspx.designer.cs">
       <DependentUpon>CCrear.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CEditar.aspx.cs">
+      <DependentUpon>CEditar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CEditar.aspx.designer.cs">
+      <DependentUpon>CEditar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CHistorial.aspx.cs">
+      <DependentUpon>CHistorial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CHistorial.aspx.designer.cs">
+      <DependentUpon>CHistorial.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Conexion.cs" />
+    <Compile Include="CReactivar.aspx.cs">
+      <DependentUpon>CReactivar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CReactivar.aspx.designer.cs">
+      <DependentUpon>CReactivar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CrearU.aspx.cs">
       <DependentUpon>CrearU.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CrearU.aspx.designer.cs">
       <DependentUpon>CrearU.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CResolver.aspx.cs">
+      <DependentUpon>CResolver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CResolver.aspx.designer.cs">
+      <DependentUpon>CResolver.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CSituacion.aspx.cs">
+      <DependentUpon>CSituacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CSituacion.aspx.designer.cs">
+      <DependentUpon>CSituacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="EliminarU.aspx.cs">
       <DependentUpon>EliminarU.aspx</DependentUpon>
@@ -219,6 +267,9 @@
     <Folder Include="images\" />
     <Folder Include="js\" />
     <Folder Include="Usu\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

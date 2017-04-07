@@ -12,7 +12,15 @@ namespace _IPC2_Proyecto2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["rol"] != null || Session["pass"] != null || Session["usuario"] != null)
+            {
 
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos validos para entrar");
+                Response.Redirect("Inicio.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -26,8 +34,10 @@ namespace _IPC2_Proyecto2
             estado = est(txtEstado.Text);
             situacion = sit(txtSituacion.Text);
             proyecto = p.ObtenerId(DropDownList1.Text);
-            editor = u.ObtenerId(txtEditor.Text);
+            editor = u.ObtenerId(DropDownList2.Text);
             creador = u.ObtenerId(Session["usuario"].ToString());
+
+            int proye = p.existenciaTrabajador(proyecto, editor);
 
             if (categoria == 0 || prioridad == 0 || estado == 0 || situacion == 0)
             {
@@ -37,23 +47,42 @@ namespace _IPC2_Proyecto2
             {
                 if (estado == 1 || estado == 4)
                 {
-                    if (prioridad == 9 || prioridad == 10 || prioridad == 11 || prioridad == 12 || prioridad == 13)
+                    if (situacion == 9 || situacion == 10 || situacion == 11 || situacion == 12 || situacion == 13)
                     {
-                        c.crearCaso(txtTitulo.Text,txtFechaLim.Text,creador,proyecto,Int32.Parse(txtAvance.Text),txtDesc.Text,editor,estado,situacion,categoria,prioridad,txtFechaEnt.Text);
+                        if (editor != 0)
+                        {
+                            c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
+                            int idCaso = c.obtenerIdCaso(txtTitulo.Text);
+                            c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, txtEstado.Text, txtSituacion.Text, txtCategoria.Text, txtPrioridad.Text, txtFechaEnt.Text, Session["usuario"].ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("El usuario debe estar asignado al proyecto");
+                        }
+
                     }
                     else{//9 al 13
-                        MessageBox.Show("La prioridad no es adecuada para el estado");
+                        MessageBox.Show("La situacion no es adecuada para el estado");
                     }
                 }
                 else if (estado == 2)
                 {
-                    if (prioridad >= 1 || prioridad <= 8)
+                    if (situacion >= 1 || situacion <= 8)
                     {
-                        c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
+                        if (editor != 0)
+                        {
+                            c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
+                            int idCaso = c.obtenerIdCaso(txtTitulo.Text);
+                            c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, txtEstado.Text, txtSituacion.Text, txtCategoria.Text, txtPrioridad.Text, txtFechaEnt.Text, Session["usuario"].ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("El usuario debe estar asignado al proyecto");
+                        }
                     }
                     else
                     {//1 al 8
-                        MessageBox.Show("La prioridad no es adecuada para el estado");
+                        MessageBox.Show("La situacion no es adecuada para el estado");
                     }
                 }
             }
