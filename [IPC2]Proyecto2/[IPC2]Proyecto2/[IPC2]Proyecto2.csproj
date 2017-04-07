@@ -86,6 +86,7 @@
     <Content Include="Casos.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="PAsignarGerente.aspx" />
+    <Content Include="PAsignarTrabajador.aspx" />
     <Content Include="PCrear.aspx" />
     <Content Include="PEliminar.aspx" />
     <Content Include="PModificar.aspx" />
@@ -165,6 +166,13 @@
     </Compile>
     <Compile Include="PAsignarGerente.aspx.designer.cs">
       <DependentUpon>PAsignarGerente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAsignarTrabajador.aspx.cs">
+      <DependentUpon>PAsignarTrabajador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAsignarTrabajador.aspx.designer.cs">
+      <DependentUpon>PAsignarTrabajador.aspx</DependentUpon>
     </Compile>
     <Compile Include="PCrear.aspx.cs">
       <DependentUpon>PCrear.aspx</DependentUpon>

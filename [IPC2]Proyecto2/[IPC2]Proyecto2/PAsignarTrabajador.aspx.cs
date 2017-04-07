@@ -8,13 +8,13 @@ using System.Windows.Forms;
 
 namespace _IPC2_Proyecto2
 {
-    public partial class PAsignarGerente : System.Web.UI.Page
+    public partial class PAsignarTrabajador : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["rol"] != null || Session["pass"] != null || Session["usuario"] != null)
             {
-                
+
             }
             else
             {
@@ -23,34 +23,23 @@ namespace _IPC2_Proyecto2
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnAsignar_Click(object sender, EventArgs e)
         {
             Proyecto p = new Proyecto();
             Usuario u = new Usuario();
             int equipo = 0;
-            int gerente = u.ObtenerId(DropDownList2.Text);
+            int usuario = u.ObtenerId(DropDownList2.Text);
             int proyecto = p.ObtenerId(DropDownList1.Text);
-            equipo = p.existenciaGerente(proyecto);
+            equipo = p.existenciaTrabajador(proyecto,usuario);
             if (equipo == 0)
             {
-                p.asignarGerente(proyecto, gerente);
-                Response.Redirect("PAsignarGerente.aspx");
+                p.asignarTrabajador(proyecto, usuario);
+                Response.Redirect("PAsignarTrabajador.aspx");
             }
             else
             {
-                DialogResult result = MessageBox.Show("El proyecto ya posee un gerente, desea cambiarlo ?", "Cambiar", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    p.actulizarGerente(equipo, gerente);
-                    Response.Redirect("PAsignarGerente.aspx");
-                }
-                else if (result == DialogResult.No)
-                {
-
-                }
+                DialogResult result = MessageBox.Show("El trabajador ya ha sido asignado al proyecto");
             }
-
-
 
         }
     }

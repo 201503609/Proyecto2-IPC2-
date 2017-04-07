@@ -31,6 +31,7 @@
 
         <div class="6u$ 12u$(3)">
             <asp:Button ID="Button2" runat="server" Text="Cargar información" OnClick="Button2_Click" />
+            <br />
         </div>
 
         <div class="6u$ 12u$(3)">

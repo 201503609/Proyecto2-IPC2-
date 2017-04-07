@@ -20,7 +20,7 @@ namespace _IPC2_Proyecto2
         SqlDataAdapter sda = null;
         DataTable tblData = new DataTable();
 
-        //Funciona
+        //Ya Funciona
         public void crearProyecto(string nombre, string fechaIn, string fechaFin, string presupuesto, string duracion)
         {
             try
@@ -45,7 +45,7 @@ namespace _IPC2_Proyecto2
                 MessageBox.Show("Ocurrio el siguiente problema al crear el proyecto: " + exe.ToString());
             }
         }
-        //Funciona
+        //Ya Funciona
         public void modificarProyecto(string nombre, string fechaIn, string fechaFin, string presupuesto, string duracion, string name)
         {
             try
@@ -70,7 +70,7 @@ namespace _IPC2_Proyecto2
                 MessageBox.Show("No se logro modificar el proyecto por: " + ex.ToString());
             }
         }
-        //Funciona
+        //Ya Funciona
         public ArrayList obtenerDatos(string nombre)
         {
             try
@@ -114,7 +114,7 @@ namespace _IPC2_Proyecto2
                 cn.finalizar();
             }
         }
-        //Funciona
+        //Ya Funciona
         public void eliminarProyecto(string nombre)
         {
 
@@ -220,7 +220,7 @@ namespace _IPC2_Proyecto2
                 MessageBox.Show("No se logro modificar el gerente por: " + ex.ToString());
             }
         }
-        //Funciona
+        //Ya Funciona
         public int ObtenerId(string nombre)
         {
             MessageBox.Show("Obtener id de: " + nombre);
@@ -261,6 +261,69 @@ namespace _IPC2_Proyecto2
 
 
         }
+        //Creo que funciona
+        public void asignarTrabajador(int proyecto, int usuario)
+        {
+            try
+            {
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("INSERT INTO Equipo(proyectoId,usuarioId) VALUES(@proyectoId,@usuarioId)", cn.getSqlConnection());
+                cmd.Parameters.AddWithValue("@usuarioId", usuario);
+                cmd.Parameters.AddWithValue("@proyectoId", proyecto);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Se asigno trabajador al proyecto " + proyecto);
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro asignar el trabajador por: " + sqe.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro asignar el trabajador por: " + ex.ToString());
+            }
+        }
+        //Verificar Existencia Trabajador
+        public int existenciaTrabajador(int proyecto, int usuario)
+        {
+            try
+            {
+                int equipo;
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("select * from Equipo WHERE proyectoId = @proyectoId AND usuarioId = @usuarioId", cn.getSqlConnection());
+                cmd.Parameters.AddWithValue("@proyectoId", proyecto);
+                cmd.Parameters.AddWithValue("@usuarioId", usuario);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    string id;
+                    id = Convert.ToString(dr["idEquipo"]);
+                    equipo = Int32.Parse(id);
+                    return equipo;
+                }
+                else
+                {
+                    return 0;
+                }
+                cn.finalizar();
+                dr.Close();
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro obtener el id del equipo por: " + sqe.ToString());
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro obtener el id del equipo por: " + ex.ToString());
+                return 0;
+            }
+            finally
+            {
+                cn.finalizar();
+            }
+        }
+
 
         //------PARA LOS REPORTES----------------------------------------------
         //Todos los proyectos

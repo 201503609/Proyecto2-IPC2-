@@ -12,15 +12,23 @@ namespace _IPC2_Proyecto2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["rol"] != null || Session["pass"] != null || Session["usuario"] != null)
-            //{
-            //    MessageBox.Show("Tiene permisos validos para entrar");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No tiene permisos validos para entrar");
-            //    Response.Redirect("Inicio.aspx");
-            //}
+            if (Session["rol"] != null || Session["pass"] != null || Session["usuario"] != null)
+            {
+                int rororo =  Int32.Parse(Session["rol"].ToString());
+                if (rororo == 3 || rororo == 4 || rororo == 5)
+                {
+                    btnCrear.Visible = false;
+                    btnEliminar.Visible = false;
+                    btnModificar.Visible = false;
+                    btnRol.Visible = false;
+                    btnPerfil.Visible = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos validos para entrar");
+                Response.Redirect("Inicio.aspx");
+            }
         }
         //Cerrar Sesión
         protected void Button2_Click1(object sender, EventArgs e)
@@ -50,10 +58,10 @@ namespace _IPC2_Proyecto2
         {
             Response.Redirect("PAsignarGerente.aspx");
         }
-
+        //Asignar trabajador
         protected void Button7_Click1(object sender, EventArgs e)
         {
-
+            Response.Redirect("PAsignarTrabajador.aspx");
         }
     }
 }
