@@ -53,7 +53,7 @@
                         <asp:Button class="button alt fit small" ID="btnEditar" runat="server" OnClick="Button4_Click1" Text="Editar Caso" />
                         <asp:Button class="button fit small" ID="btnAsignar" runat="server" OnClick="Button6_Click1" Text="Asignar Trabajador" />
                         <asp:Button class="button alt fit small" ID="btnConsultar" runat="server" OnClick="Button9_Click1" Text="Historial Caso" Style="height: 29px" />                      
-                        <asp:Button class="button alt fit small" ID="btnTotales" runat="server" OnClick="Button11_Click1" Text="Casos del sistema" Style="height: 29px" />    
+                        <asp:Button class="button fit small" ID="btnTotales" runat="server" OnClick="Button11_Click1" Text="Casos del sistema" Style="height: 29px" />    
                     </ul>
                 </div>
                 <div class="6u$ 12u$(3)">
@@ -62,7 +62,10 @@
                         <asp:Button class="button fit small " ID="btnSituacion" runat="server" OnClick="Button8_Click1" Text="Cambiar Situacion" Style="height: 29px" />
                         <asp:Button class="button alt fit small" ID="btnReactivar" runat="server" OnClick="Button10_Click1" Text="Reactivar Caso" Style="height: 29px" />                   
                         <asp:Button class="button fit small" ID="btnEliminar" runat="server" OnClick="Button5_Click1" Text="Cerrar Caso" Style="height: 29px" />                        
+                        <asp:Button class="button alt fit small" ID="btnCon" runat="server" OnClick="Button12_Click1" Text="Consultar Caso" Style="height: 29px" />                        
+
                     </ul>
+
                 </div>
             </div>
         </section>

@@ -14,7 +14,15 @@ namespace _IPC2_Proyecto2
         {
             if (Session["rol"] != null || Session["pass"] != null || Session["usuario"] != null)
             {
-                
+                int rololo = Int32.Parse(Session["rol"].ToString());
+                if (rololo == 3 || rololo == 4 || rololo ==5)
+                {
+                    btnCrear.Visible = false;
+                    btnConsultar.Visible = false;
+                    btnTotales.Visible = false;
+                    btnReactivar.Visible = false;
+                    btnEliminar.Visible = false;
+                }
             }
             else
             {
@@ -75,6 +83,11 @@ namespace _IPC2_Proyecto2
         protected void Button11_Click1(object sender, EventArgs e)
         {
             Response.Redirect("CTotales.aspx");
+        }
+        //Consultar Caso
+        protected void Button12_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("CConsultar.aspx");
         }
     }
 }

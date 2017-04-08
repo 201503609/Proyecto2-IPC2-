@@ -93,6 +93,7 @@
   <ItemGroup>
     <Content Include="Casos.aspx" />
     <Content Include="Inicio.aspx" />
+    <Content Include="PAsignados.aspx" />
     <Content Include="PAsignarGerente.aspx" />
     <Content Include="PAsignarTrabajador.aspx" />
     <Content Include="PCrear.aspx" />
@@ -223,6 +224,13 @@
     </Compile>
     <Compile Include="ModificarU.aspx.designer.cs">
       <DependentUpon>ModificarU.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PAsignados.aspx.cs">
+      <DependentUpon>PAsignados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PAsignados.aspx.designer.cs">
+      <DependentUpon>PAsignados.aspx</DependentUpon>
     </Compile>
     <Compile Include="PAsignarGerente.aspx.cs">
       <DependentUpon>PAsignarGerente.aspx</DependentUpon>

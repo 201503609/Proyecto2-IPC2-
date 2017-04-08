@@ -49,6 +49,15 @@ namespace _IPC2_Proyecto2 {
         protected global::System.Web.UI.WebControls.Button btnModificar;
         
         /// <summary>
+        /// btnPerfil control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPerfil;
+        
+        /// <summary>
         /// btnEliminar control.
         /// </summary>
         /// <remarks>
@@ -67,12 +76,12 @@ namespace _IPC2_Proyecto2 {
         protected global::System.Web.UI.WebControls.Button btnRol;
         
         /// <summary>
-        /// btnPerfil control.
+        /// btnProyPer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPerfil;
+        protected global::System.Web.UI.WebControls.Button btnProyPer;
     }
 }

@@ -19,7 +19,7 @@ namespace _IPC2_Proyecto2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            btnReporte.Visible = true;
+
         }
 
         protected void btnConsultar_Click(object sender, EventArgs e)
@@ -30,7 +30,6 @@ namespace _IPC2_Proyecto2
             sda.Fill(tblData);
             GridView1.DataSource = (tblData);
             GridView1.DataBind();
-            btnReporte.Visible = true;
 
             string html = "<html>";
             html += "</body>";

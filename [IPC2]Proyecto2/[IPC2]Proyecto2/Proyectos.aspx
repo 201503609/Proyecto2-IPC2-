@@ -50,18 +50,20 @@
                         ">
                         <asp:Button class="button alt fit small" ID="btnCrear" runat="server" OnClick="Button3_Click1" Text="Crear Proyecto" />
                         <asp:Button class="button fit small" ID="btnModificar" runat="server" OnClick="Button4_Click1" Text="Modificar Proyecto" />
-                    </ul>
-                </div>
-                <div class="6u$ 12u$(3)">
-                    <ul class="actions fit small">
-                        <asp:Button class="button alt fit small" ID="btnEliminar" runat="server" OnClick="Button5_Click1" Text="Eliminar Proyecto" Style="height: 29px" />
-                        <asp:Button class="button fit small" ID="btnRol" runat="server" OnClick="Button6_Click1" Text="Asignar  Gerente" />
-                    </ul>
-                </div>
-                <div class="6u$ 12u$(3)">
-                    <ul class="actions fit small">
                         <asp:Button class="button alt fit small" ID="btnPerfil" runat="server" OnClick="Button7_Click1" Text="Asignar Trabajadores" Style="height: 29px" />
+                 
                     </ul>
+                </div>
+                <div class="6u$ 12u$(3)">
+                    <ul class="actions fit small">
+                        <asp:Button class="button fit small" ID="btnEliminar" runat="server" OnClick="Button5_Click1" Text="Eliminar Proyecto" Style="height: 29px" />
+                        <asp:Button class="button alt fit small" ID="btnRol" runat="server" OnClick="Button6_Click1" Text="Asignar  Gerente" />
+                        <asp:Button class="button alt fit small" ID="btnProyPer" runat="server" OnClick="Button8_Click1" Text="Proyectos Asignados" />
+                    </ul>
+                </div>
+                <div class="6u$ 12u$(3)">
+                    <ul class="actions fit small">
+                        </ul>
                 </div>
             </div>
 

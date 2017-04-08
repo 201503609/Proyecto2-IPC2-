@@ -33,16 +33,31 @@ namespace _IPC2_Proyecto2
             equipo = p.existenciaGerente(proyecto);
             if (equipo == 0)
             {
-                p.asignarGerente(proyecto, gerente);
-                Response.Redirect("PAsignarGerente.aspx");
+                if (gerente == 2)
+                {
+                    p.asignarGerente(proyecto, gerente);
+                    Response.Redirect("PAsignarGerente.aspx");
+                }
+                else
+                {
+                    MessageBox.Show("Unicamente un usuario de tipo 2 puede ser Gerente");
+                }
+                
             }
             else
             {
                 DialogResult result = MessageBox.Show("El proyecto ya posee un gerente, desea cambiarlo ?", "Cambiar", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    p.actulizarGerente(equipo, gerente);
-                    Response.Redirect("PAsignarGerente.aspx");
+                    if (gerente == 2)
+                    {
+                        p.actulizarGerente(equipo, gerente);
+                        Response.Redirect("PAsignarGerente.aspx");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unicamente un usuario de tipo 2 puede ser Gerente");
+                    }
                 }
                 else if (result == DialogResult.No)
                 {

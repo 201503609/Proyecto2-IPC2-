@@ -63,5 +63,10 @@ namespace _IPC2_Proyecto2
         {
             Response.Redirect("PAsignarTrabajador.aspx");
         }
+        //proyectos asignados
+        protected void Button8_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("PAsignados.aspx");
+        }
     }
 }
