@@ -18,7 +18,7 @@
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-xlarge.css" />
-		</noscript>
+	</noscript>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -47,28 +47,21 @@
             </div>
             <div class="row">
                 <div class="6u 12u$(3)">
-                    <ul class="actions fit small
+                    <ul class="actions alt fit small
                         ">
-                        <asp:Button class="button alt fit small" ID="btnCrear" runat="server" OnClick="Button3_Click1" Text="Crear Caso" />
-                        <asp:Button class="button fit small" ID="btnEditar" runat="server" OnClick="Button4_Click1" Text="Editar Caso" />
-                    </ul>
-                </div>
-                <div class="6u$ 12u$(3)">
-                    <ul class="actions fit small">
-                        <asp:Button class="button alt fit small" ID="btnEliminar" runat="server" OnClick="Button5_Click1" Text="Cerrar Caso" Style="height: 29px" />
+                        <asp:Button class="button fit small" ID="btnCrear" runat="server" OnClick="Button3_Click1" Text="Crear Caso" />
+                        <asp:Button class="button alt fit small" ID="btnEditar" runat="server" OnClick="Button4_Click1" Text="Editar Caso" />
                         <asp:Button class="button fit small" ID="btnAsignar" runat="server" OnClick="Button6_Click1" Text="Asignar Trabajador" />
+                        <asp:Button class="button alt fit small" ID="btnConsultar" runat="server" OnClick="Button9_Click1" Text="Historial Caso" Style="height: 29px" />                      
+                        <asp:Button class="button alt fit small" ID="btnTotales" runat="server" OnClick="Button11_Click1" Text="Casos del sistema" Style="height: 29px" />    
                     </ul>
                 </div>
                 <div class="6u$ 12u$(3)">
-                    <ul class="actions fit small">
+                    <ul class="actions alt fit small">
                         <asp:Button class="button alt fit small" ID="btnResolver" runat="server" OnClick="Button7_Click1" Text="Resolver Caso" Style="height: 29px" />
-                        <asp:Button class="button alt fit small" ID="btnSituacion" runat="server" OnClick="Button8_Click1" Text="Cambiar Situacion" Style="height: 29px" />
-                    </ul>
-                </div>
-                <div class="6u$ 12u$(3)">
-                    <ul class="actions fit small">
-                        <asp:Button class="button alt fit small" ID="btnConsultar" runat="server" OnClick="Button9_Click1" Text="Consultar Caso" Style="height: 29px" />
-                        <asp:Button class="button alt fit small" ID="btnReactivar" runat="server" OnClick="Button10_Click1" Text="Reactivar Caso" Style="height: 29px" />
+                        <asp:Button class="button fit small " ID="btnSituacion" runat="server" OnClick="Button8_Click1" Text="Cambiar Situacion" Style="height: 29px" />
+                        <asp:Button class="button alt fit small" ID="btnReactivar" runat="server" OnClick="Button10_Click1" Text="Reactivar Caso" Style="height: 29px" />                   
+                        <asp:Button class="button fit small" ID="btnEliminar" runat="server" OnClick="Button5_Click1" Text="Cerrar Caso" Style="height: 29px" />                        
                     </ul>
                 </div>
             </div>

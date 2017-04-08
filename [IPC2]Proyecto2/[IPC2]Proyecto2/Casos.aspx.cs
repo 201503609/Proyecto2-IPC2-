@@ -43,7 +43,8 @@ namespace _IPC2_Proyecto2
         //Cerrar Caso
         protected void Button5_Click1(object sender, EventArgs e)
         {
-            Response.Redirect("CCerrar.aspx");
+            MessageBox.Show("Funcion en mantenimiento");
+            //Response.Redirect("CCerrar.aspx");
         }
         //Asignar Trabajador
         protected void Button6_Click1(object sender, EventArgs e)
@@ -60,7 +61,7 @@ namespace _IPC2_Proyecto2
         {
             Response.Redirect("CSituacion.aspx");
         }
-        //Consultar Caso
+        //Historial Caso
         protected void Button9_Click1(object sender, EventArgs e)
         {
             Response.Redirect("CHistorial.aspx");
@@ -69,6 +70,11 @@ namespace _IPC2_Proyecto2
         protected void Button10_Click1(object sender, EventArgs e)
         {
             Response.Redirect("CReactivar.aspx");
+        }
+        //Casos totales
+        protected void Button11_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("CTotales.aspx");
         }
     }
 }

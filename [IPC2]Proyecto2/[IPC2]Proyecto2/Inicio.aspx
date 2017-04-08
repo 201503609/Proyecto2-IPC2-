@@ -31,7 +31,7 @@
         <!-- Banner -->
         <section id="banner">
             <h2>BugTracker</h2>
-            <div class="container 50%">
+            <div class="container 100%">
 
                 <div class="row uniform">
                     <div class="6u 12u$(small)">

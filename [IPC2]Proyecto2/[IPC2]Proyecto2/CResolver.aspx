@@ -4,11 +4,30 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <meta charset="UTF-8">
+    <title>Resolver caso</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
+    <noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+	</noscript>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <!-- Header -->
+        <header id="header">
+            <h1><a href="Casos.aspx">Casos</a></h1>
+        </header>
+
+        <div class="6u 12u$(small)">
             
             Caso:<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="titulo" DataValueField="titulo">
             </asp:DropDownList>
@@ -23,7 +42,7 @@
             <br />
             
         </div>
-        <div>
+        <div class="6u 12u$(small)">
 
             Estado Actual:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtEstadoV" placeholder="Estado Actual" runat="server" Enabled="False"></asp:TextBox>
@@ -37,7 +56,7 @@
             <br />
 
         </div>
-        <div>
+        <div class="6u 12u$(3)">
 
             <asp:Button ID="btnResolver" runat="server" Text="Resolver" OnClick="btnResolver_Click" />
 

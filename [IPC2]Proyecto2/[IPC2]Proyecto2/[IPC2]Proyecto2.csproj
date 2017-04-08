@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="CambiarRol.aspx" />
     <Content Include="CAsignarEditor.aspx" />
+    <Content Include="CConsultar.aspx" />
     <Content Include="CCrear.aspx" />
     <Content Include="CEditar.aspx" />
     <Content Include="CHistorial.aspx" />
@@ -76,6 +77,7 @@
     <Content Include="CrearU.aspx" />
     <Content Include="CResolver.aspx" />
     <Content Include="CSituacion.aspx" />
+    <Content Include="CTotales.aspx" />
     <Content Include="EliminarU.aspx" />
     <Content Include="Inicio2.aspx" />
     <Content Include="ModificarPerfilU.aspx" />
@@ -122,6 +124,13 @@
     </Compile>
     <Compile Include="Casos.aspx.designer.cs">
       <DependentUpon>Casos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CConsultar.aspx.cs">
+      <DependentUpon>CConsultar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CConsultar.aspx.designer.cs">
+      <DependentUpon>CConsultar.aspx</DependentUpon>
     </Compile>
     <Compile Include="CCrear.aspx.cs">
       <DependentUpon>CCrear.aspx</DependentUpon>
@@ -172,6 +181,13 @@
     </Compile>
     <Compile Include="CSituacion.aspx.designer.cs">
       <DependentUpon>CSituacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CTotales.aspx.cs">
+      <DependentUpon>CTotales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CTotales.aspx.designer.cs">
+      <DependentUpon>CTotales.aspx</DependentUpon>
     </Compile>
     <Compile Include="EliminarU.aspx.cs">
       <DependentUpon>EliminarU.aspx</DependentUpon>
