@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace _IPC2_Proyecto2
 {
@@ -25,19 +27,39 @@ namespace _IPC2_Proyecto2
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
             cn = Conexion.conectar();
-            cmd = new SqlCommand("SELECT * FROM Caso", cn.getSqlConnection());
+            cmd = new SqlCommand("Select idCaso, titulo,fechaLimite,c.creadoPor, p.nombre,avance,descripcionCaso,u.nombre,nombreCate, nombrePrioridad, nombreEstado,nombreSituacion,  fechaEntrega "+
+                                    " FROM Caso as c INNER JOIN Proyectos as p ON idProyecto = proyectoId INNER JOIN Usuarios as u ON editadoPor = idUsuario INNER JOIN Categoria " +
+                                    "ON c.categoria = idCategoria INNER JOIN Prioridad ON c.prioridad = idPrioridad INNER JOIN Estado On c.estado = idEstado "+
+                                    "INNER JOIN Situacion ON c.situacion = idSituacion", cn.getSqlConnection());
             sda = new SqlDataAdapter(cmd);
             sda.Fill(tblData);
             GridView1.DataSource = (tblData);
             GridView1.DataBind();
 
             string html = "<html>";
-            html += "</body>";
-            html += "<table>";
+            html += ("<head>\n");
+            html += ("<title> Reporte de Casos </title>\n");
+            html += ("</head>\n");
+            html += "<body>";
+            html += ("<center>\n");
+            html += ("<h1>CASOS DEL SISTEMA</h1>\n");
+            html += ("</center>\n");
+            html += "<table  border=2 style = \"margin: 0 auto\">\n";
             //add header row
             html += "<tr>";
-            for (int i = 0; i < tblData.Columns.Count; i++)
-                html += "<td>" + tblData.Columns[i].ColumnName + "</td>";
+                html += ("<th>id</th>\n");
+                html += ("<th>Titulo</th>\n");
+                html += ("<th>Fecha Limite</th>\n");
+                html += ("<th>Creado por</th>\n");
+                html += ("<th>id Proyecto</th>\n");
+                html += ("<th>Avance</th>\n");
+                html += ("<th>Descripcion</th>\n");
+                html += ("<th>Editor</th>\n");
+                html += ("<th>Estado</th>\n");
+                html += ("<th>Situacion</th>\n");
+                html += ("<th>Categoria</th>\n");
+                html += ("<th>Prioridad</th>\n");
+                html += ("<th>Fecha Entrega</th>\n");
             html += "</tr>";
             //add rows
             for (int i = 0; i < tblData.Rows.Count; i++)
@@ -49,8 +71,8 @@ namespace _IPC2_Proyecto2
                 }
                 html += "</tr>";
             }
-            html += "</body>";
             html += "</table>";
+            html += "</body>";
             html += "</html>";
 
             crear_Archivo(html);
@@ -58,41 +80,9 @@ namespace _IPC2_Proyecto2
 
         }
 
-        protected void btnReporte_Click(object sender, EventArgs e)
-        {
-            string hola = ConvertDataTableToHTML(tblData);
-
-            crear_Archivo(hola);
-        }
-
-        public static string ConvertDataTableToHTML(DataTable dt)
-        {
-            string html = "<html>";
-            html += "</body>";
-            html += "<table>";
-            //add header row
-            html += "<tr>";
-            for (int i = 0; i < dt.Columns.Count; i++)
-                html += "<td>" + dt.Columns[i].ColumnName + "</td>";
-            html += "</tr>";
-            //add rows
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                html += "<tr>";
-                for (int j = 0; j < dt.Columns.Count; j++)
-                {
-                    html += "<td>" + dt.Rows[i][j].ToString() + "</td>";
-                }
-                html += "</tr>";
-            }
-            html += "</body>";
-            html += "</table>";
-            html += "</html>";
-            return html;
-        }
         private void crear_Archivo(string tokens)
         {
-            System.IO.StreamWriter archivo = new System.IO.StreamWriter("C:\\HTMLs\\IPC2.html");
+            System.IO.StreamWriter archivo = new System.IO.StreamWriter("C:\\HTMLs\\CasosTotalesDelSistema.html");
 
             archivo.Write(tokens);
             archivo.Close();

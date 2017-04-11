@@ -253,6 +253,8 @@ namespace _IPC2_Proyecto2
                 cn.finalizar();
             }
         }
+
+
         //Ya funciona
         public ArrayList datosCompletosdeCaso(string titulo)
         {

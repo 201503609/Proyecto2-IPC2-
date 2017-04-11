@@ -144,6 +144,8 @@ namespace _IPC2_Proyecto2
             estado = est(txtEstado.Text);
             situacion = sit(txtNueva.Text);
 
+            //int pr = p.existenciaTrabajador(proy, trabNuevo);
+
             if (estado == 1 || estado == 4)
             {
                 if (situacion == 9 || situacion == 10 || situacion == 11 || situacion == 12 || situacion == 13)

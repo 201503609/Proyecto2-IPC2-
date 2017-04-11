@@ -28,6 +28,7 @@ namespace _IPC2_Proyecto2
             Usuario u = new Usuario();
             int rol = Int32.Parse(Session["Rol"].ToString());
             int rol2 = Int32.Parse(DropDownList1.Text);
+            int resul = cambioRol(txtRol.Text);
 
             if (rol2 == 1)
             {
@@ -37,7 +38,7 @@ namespace _IPC2_Proyecto2
             {
                 if (rol == 1)
                 {
-                    u.cambiarRol(txtCorreo.Text, Int32.Parse(txtRol.Text));
+                    u.cambiarRol(txtCorreo.Text, resul);
                     Response.Redirect("CambiarRol.aspx");
                 }
                 else
@@ -49,7 +50,7 @@ namespace _IPC2_Proyecto2
             {
                 if (rol == 1 || rol == 2)
                 {
-                    u.cambiarRol(txtCorreo.Text, Int32.Parse(txtRol.Text));
+                    u.cambiarRol(txtCorreo.Text, resul);
                     Response.Redirect("CambiarRol.aspx");
                 }
                 else
@@ -57,7 +58,7 @@ namespace _IPC2_Proyecto2
                     MessageBox.Show("Unicamente el Super usuario y Administrador(Gerente) pueden cambiar el rol a usuarios de este tipo");
                 }
             }
-            
+
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -69,6 +70,35 @@ namespace _IPC2_Proyecto2
         protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
         {
 
+        }
+
+        public int cambioRol(string text)
+        {
+            if (text == "Super usuario")
+            {
+                return 1;
+            }
+            else if (text == "Administrador")
+            {
+                return 2;
+            }
+            else if (text == "Arquitecto")
+            {
+                return 3;
+            }
+            else if (text == "Developer")
+            {
+                return 4;
+            }
+            else if (text == "Tester")
+            {
+                return 5;
+            }
+            else
+            {
+                return 0;
+            }
+            
         }
     }
 }

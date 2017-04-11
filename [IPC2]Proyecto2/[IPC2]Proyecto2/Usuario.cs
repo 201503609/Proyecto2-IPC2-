@@ -218,7 +218,6 @@ namespace _IPC2_Proyecto2
         //Ya funciona
         public int ObtenerId(string usuario)
         {
-            MessageBox.Show("Obtener rol de: " + usuario);
             try
             {
                 Console.WriteLine(usuario);

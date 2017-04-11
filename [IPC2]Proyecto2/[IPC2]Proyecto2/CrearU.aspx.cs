@@ -58,5 +58,34 @@ namespace _IPC2_Proyecto2
             }
             
         }
+
+        public int cambioRol(string text)
+        {
+            if (text == "Super usuario")
+            {
+                return 1;
+            }
+            else if (text == "Administrador")
+            {
+                return 2;
+            }
+            else if (text == "Arquitecto")
+            {
+                return 3;
+            }
+            else if (text == "Developer")
+            {
+                return 4;
+            }
+            else if (text == "Tester")
+            {
+                return 5;
+            }
+            else
+            {
+                return 0;
+            }
+
+        }
     }
 }

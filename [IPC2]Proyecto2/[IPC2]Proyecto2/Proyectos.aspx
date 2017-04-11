@@ -29,7 +29,7 @@
             <nav id="nav">
                 <ul>
                     <li><a href="Inicio2.aspx">Inicio</a></li>
-                    <li><a href="Proyectos.aspx">Proyectos</a></li>
+                    <li><a href="Usuarios.aspx">Usuarios</a></li>
                     <li><a href="Casos.aspx">Casos</a></li>
                     <li>
                         <asp:Button class="button special" ID="btn_cerrar" runat="server" OnClick="Button2_Click1" Text="Cerrar Sesión" /></li>
@@ -41,7 +41,7 @@
         <section id="main" class="wrapper">
             <div class="container">
                 <header class="major">
-                    <h2>Gestión de usuarios</h2>
+                    <h2>Gestión de proyectos</h2>
                 </header>
             </div>
             <div class="row">
