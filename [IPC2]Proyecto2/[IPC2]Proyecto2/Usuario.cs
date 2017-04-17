@@ -218,17 +218,20 @@ namespace _IPC2_Proyecto2
         //Ya funciona
         public int ObtenerId(string usuario)
         {
+            MessageBox.Show("Obtner el id de " + usuario);
             try
-            {
+            { 
+                int iid = 0;
                 Console.WriteLine(usuario);
                 cn = Conexion.conectar();
                 cmd = new SqlCommand("select * from Usuarios WHERE correo='" + usuario +"'", cn.getSqlConnection());
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
+                    
                     string id;
                     id = Convert.ToString(dr["idUsuario"]);
-                    pre = Int32.Parse(id);
+                    iid = Int32.Parse(id);
                 }
                 else
                 {
@@ -236,8 +239,8 @@ namespace _IPC2_Proyecto2
                 }
                 cn.finalizar();
                 dr.Close();
-
-                return pre;
+                MessageBox.Show("El id de " + usuario + " es " + iid.ToString());
+                return iid;
             }
             catch (SqlException sqe)
             {
@@ -297,5 +300,48 @@ namespace _IPC2_Proyecto2
 
 
         }
+        //A probar
+        public int ObtenerRo(string usuario)
+        {
+            MessageBox.Show("Obtener rol de: " + usuario);
+            try
+            {
+                Console.WriteLine(usuario);
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("select * from Usuarios WHERE correo='" + usuario + "' AND estado = 'activo'", cn.getSqlConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    string id;
+                    id = Convert.ToString(dr["rol"]);
+                    pre = Int32.Parse(id);
+                }
+                else
+                {
+                    return 0;
+                }
+                cn.finalizar();
+                dr.Close();
+
+                return pre;
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + sqe.ToString());
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + ex.ToString());
+                return 0;
+            }
+            finally
+            {
+                cn.finalizar();
+            }
+
+
+        }
+
     }
 }

@@ -63,7 +63,7 @@ namespace _IPC2_Proyecto2
                 if (situacion == 9 || situacion == 10 || situacion == 11 || situacion == 12 || situacion == 13)
                 {
                     c.reactivarCaso(idCaso,situacion);
-                    c.crearHistorial(idCaso, "", "", "Resuelto", TextBox1.Text, "", "", "", Session["usuario"].ToString());
+                    c.crearHistorial(idCaso, "", "", "Reactivado", TextBox1.Text, "", "", "", Session["usuario"].ToString());
                 }
                 else
                 {//9 al 13
@@ -75,7 +75,7 @@ namespace _IPC2_Proyecto2
                 if (situacion >= 1 || situacion <= 8)
                 {
                     c.reactivarCaso(idCaso, situacion);
-                    c.crearHistorial(idCaso, "", "", "Resuelto", TextBox1.Text, "", "", "", Session["usuario"].ToString());
+                    c.crearHistorial(idCaso, "", "", "Reactivado", TextBox1.Text, "", "", "", Session["usuario"].ToString());
                 }
                 else
                 {//1 al 8

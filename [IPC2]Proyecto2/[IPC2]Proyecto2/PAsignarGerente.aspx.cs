@@ -29,11 +29,12 @@ namespace _IPC2_Proyecto2
             Usuario u = new Usuario();
             int equipo = 0;
             int gerente = u.ObtenerId(DropDownList2.Text);
+            int rolGerente = u.ObtenerRo(DropDownList2.Text);
             int proyecto = p.ObtenerId(DropDownList1.Text);
             equipo = p.existenciaGerente(proyecto);
             if (equipo == 0)
             {
-                if (gerente == 2)
+                if (rolGerente == 2)
                 {
                     p.asignarGerente(proyecto, gerente);
                     Response.Redirect("PAsignarGerente.aspx");
@@ -49,7 +50,7 @@ namespace _IPC2_Proyecto2
                 DialogResult result = MessageBox.Show("El proyecto ya posee un gerente, desea cambiarlo ?", "Cambiar", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    if (gerente == 2)
+                    if (rolGerente == 2)
                     {
                         p.actulizarGerente(equipo, gerente);
                         Response.Redirect("PAsignarGerente.aspx");

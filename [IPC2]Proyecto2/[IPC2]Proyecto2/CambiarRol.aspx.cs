@@ -26,17 +26,17 @@ namespace _IPC2_Proyecto2
         protected void Button1_Click(object sender, EventArgs e)
         {
             Usuario u = new Usuario();
-            int rol = Int32.Parse(Session["Rol"].ToString());
-            int rol2 = Int32.Parse(DropDownList1.Text);
+            int rolLogueado = Int32.Parse(Session["Rol"].ToString());
+            int rolUEditado = u.ObtenerRo(txtCorreo.Text);
             int resul = cambioRol(txtRol.Text);
 
-            if (rol2 == 1)
+            if (rolUEditado == 1)
             {
                 MessageBox.Show("No se pueden cambiar el rol a usuarios de este tipo");
             }
-            else if (rol2 == 2)
+            else if (rolUEditado == 2)
             {
-                if (rol == 1)
+                if (rolLogueado == 1)
                 {
                     u.cambiarRol(txtCorreo.Text, resul);
                     Response.Redirect("CambiarRol.aspx");
@@ -46,9 +46,9 @@ namespace _IPC2_Proyecto2
                     MessageBox.Show("Unicamente el Super usuario puede cambiar el rol a usuarios de este tipo");
                 }
             }
-            else if (rol2 == 3 || rol2 == 4 || rol2 == 5)
+            else if (rolUEditado == 3 || rolUEditado == 4 || rolUEditado == 5)
             {
-                if (rol == 1 || rol == 2)
+                if (rolLogueado == 1 || rolLogueado == 2)
                 {
                     u.cambiarRol(txtCorreo.Text, resul);
                     Response.Redirect("CambiarRol.aspx");

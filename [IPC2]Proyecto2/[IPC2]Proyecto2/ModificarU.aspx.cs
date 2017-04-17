@@ -65,16 +65,16 @@ namespace _IPC2_Proyecto2
         {
             Usuario u = new Usuario();
             string user = DropDownList1.Text;
-            int rol = Int32.Parse(Session["Rol"].ToString());
-            int rol2 = Int32.Parse(DropDownList1.Text);
-
-            if (rol2 == 1)
+            int rolLogueado = Int32.Parse(Session["Rol"].ToString());
+            int rolUEditado = u.ObtenerRo(user);
+            
+            if (rolUEditado == 1)
             {
                 MessageBox.Show("No se pueden modificar usuarios de este tipo");
             }
-            else if (rol2 == 2)
+            else if (rolUEditado == 2)
             {
-                if (rol == 1)
+                if (rolLogueado == 1)
                 {
                     u.modificarUsuario(txtCorreo.Text, txtContra.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), user);
                     Response.Redirect("ModificarU.aspx");
@@ -84,9 +84,9 @@ namespace _IPC2_Proyecto2
                     MessageBox.Show("Unicamente el Super usuario puede modificar usuarios de este tipo");
                 }
             }
-            else if (rol2 == 3 || rol2 == 4 || rol2 == 5)
+            else if (rolUEditado == 3 || rolUEditado == 4 || rolUEditado == 5)
             {
-                if (rol == 1 || rol == 2)
+                if (rolLogueado == 1 || rolLogueado == 2)
                 {
                     u.modificarUsuario(txtCorreo.Text, txtContra.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), user);
                     Response.Redirect("ModificarU.aspx");

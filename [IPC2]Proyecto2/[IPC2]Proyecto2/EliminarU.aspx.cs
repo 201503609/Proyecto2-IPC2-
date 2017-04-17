@@ -31,15 +31,15 @@ namespace _IPC2_Proyecto2
         protected void Button2_Click(object sender, EventArgs e)
         {
             Usuario u = new Usuario();
-            int rol = Int32.Parse(Session["Rol"].ToString());
-            int rol2 = Int32.Parse(TextBox1.Text);
-            if (rol2 == 1)
+            int rolUsuarioLogueado = Int32.Parse(Session["Rol"].ToString());
+            int rolUsuarioEditado = u.ObtenerRo(TextBox1.Text);
+            if (rolUsuarioEditado == 1)
             {
-                MessageBox.Show("No se pueden crear usuarios de este tipo");
+                MessageBox.Show("No se pueden eliminar usuarios de este tipo");
             }
-            else if (rol2 == 2)
+            else if (rolUsuarioEditado == 2)
             {
-                if (rol == 1)
+                if (rolUsuarioLogueado == 1)
                 {
                     u.eliminarUsuario(TextBox1.Text);
                     Response.Redirect("EliminarU.aspx");
@@ -49,9 +49,9 @@ namespace _IPC2_Proyecto2
                     MessageBox.Show("Unicamente el Super usuario puede eliminar usuarios de este tipo");
                 }
             }
-            else if (rol2 == 3 || rol2 == 4 || rol2 == 5)
+            else if (rolUsuarioEditado == 3 || rolUsuarioEditado == 4 || rolUsuarioEditado == 5)
             {
-                if (rol == 1 || rol == 2)
+                if (rolUsuarioLogueado == 1 || rolUsuarioLogueado == 2)
                 {
                     u.eliminarUsuario(TextBox1.Text);
                     Response.Redirect("EliminarU.aspx");
