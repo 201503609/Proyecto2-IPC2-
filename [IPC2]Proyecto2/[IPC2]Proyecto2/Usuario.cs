@@ -300,7 +300,7 @@ namespace _IPC2_Proyecto2
 
 
         }
-        //A probar
+        //TYa funciona
         public int ObtenerRo(string usuario)
         {
             MessageBox.Show("Obtener rol de: " + usuario);
@@ -342,6 +342,72 @@ namespace _IPC2_Proyecto2
 
 
         }
+        //Ya funciona
+        public string recordarContra(string correo, string fecha, int tel)
+        {
+            try
+            {
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("select * from Usuarios WHERE correo=@correo AND fecha_nacimiento=@fecha AND telefono = @telefono", cn.getSqlConnection());
+                cmd.Parameters.AddWithValue("@correo", correo);
+                cmd.Parameters.AddWithValue("@fecha", fecha);
+                cmd.Parameters.AddWithValue("@telefono", tel);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    string pass;
+                    pass = Convert.ToString(dr["contraseña"]);
+                    return pass;
+                }
+                else
+                {
+                    return "";
+                }
+                cn.finalizar();
+                dr.Close();
 
+                return "";
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro obtener la contraseña por: " + sqe.ToString());
+                return "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + ex.ToString());
+                return "";
+            }
+            finally
+            {
+                cn.finalizar();
+            }
+        }
+        //a probar
+        public void cambiarContra(string correo, string vieja,string nueva)
+        {
+            try
+            {
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("UPDATE Usuarios SET contraseña =@contra WHERE correo = @correo AND contraseña = @contraseña", cn.getSqlConnection());
+                cmd.Parameters.AddWithValue("@contra", nueva);
+                cmd.Parameters.AddWithValue("@correo", correo);
+                cmd.Parameters.AddWithValue("@contraseña", vieja);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Se cambio la contraseña de: " + correo);
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro cambiar la contraseña del usuario por: " + sqe.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro cambiar la contraseña usuario por: " + ex.ToString());
+            }
+            finally
+            {
+                cn.finalizar();
+            }
+        }
     }
 }

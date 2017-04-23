@@ -67,6 +67,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CambiarContra.aspx" />
     <Content Include="CambiarRol.aspx" />
     <Content Include="CAsignarEditor.aspx" />
     <Content Include="CConsultar.aspx" />
@@ -100,10 +101,18 @@
     <Content Include="PEliminar.aspx" />
     <Content Include="PModificar.aspx" />
     <Content Include="Proyectos.aspx" />
+    <Content Include="RecordarContra.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CambiarContra.aspx.cs">
+      <DependentUpon>CambiarContra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CambiarContra.aspx.designer.cs">
+      <DependentUpon>CambiarContra.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CambiarRol.aspx.cs">
       <DependentUpon>CambiarRol.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -275,6 +284,13 @@
     </Compile>
     <Compile Include="Proyectos.aspx.designer.cs">
       <DependentUpon>Proyectos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecordarContra.aspx.cs">
+      <DependentUpon>RecordarContra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecordarContra.aspx.designer.cs">
+      <DependentUpon>RecordarContra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuario.cs" />
     <Compile Include="Usuarios.aspx.cs">

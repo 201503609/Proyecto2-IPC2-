@@ -46,6 +46,7 @@
                                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Iniciar Sesión" Height="36px" Width="161px" />
                             </li>
                         </ul>
+                        <h3><a class="6u 12u$(small)" href="RecordarContra.aspx" color="white" >Recordar Contraseña </a> <a class="6u 12u$(small)" href="CambiarContra.aspx" color="white" >Cambiar Contraseña </a></h3>
                     </div>
                 </div>
             </div>
