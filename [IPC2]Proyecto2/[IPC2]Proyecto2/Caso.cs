@@ -253,7 +253,27 @@ namespace _IPC2_Proyecto2
                 cn.finalizar();
             }
         }
-
+        //
+        public void crearNotificacion(string usuario, string caso)
+        {
+            try
+            {
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("INSERT INTO Notificacion VALUES(@usuario,@caso,@estado)", cn.getSqlConnection());
+                cmd.Parameters.AddWithValue("@usuario", usuario);
+                cmd.Parameters.AddWithValue("@caso", caso);
+                cmd.Parameters.AddWithValue("@estado", "enviado");
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("No se logro notificar al usuario por  " + sqe.ToString());
+            }
+            catch (Exception exe)
+            {
+                MessageBox.Show("No se logro notificar al usuario por " + exe.ToString());
+            }
+        }
 
         //Ya funciona
         public ArrayList datosCompletosdeCaso(string titulo)

@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Inicio2.aspx.cs" Inherits="_IPC2_Proyecto2.Inicio2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NotificacionesU.aspx.cs" Inherits="_IPC2_Proyecto2.NotificacionesU" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta charset="UTF-8">
-    <title>Inicio</title>
+    <title> Notificaciones </title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -18,11 +18,10 @@
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-xlarge.css" />
-		</noscript>
+	</noscript>
 </head>
 <body>
     <form id="form1" runat="server">
-    <!-- Header -->
         <header id="header">
             <h1><a href="Inicio2.aspx">Inicio</a></h1>
             <nav id="nav">
@@ -35,11 +34,15 @@
                 </ul>
             </nav>
         </header>
-        <!-- Banner -->
-        <section id="banner">
-            <h2>BugTracker</h2>
-            <p>BIENVENIDO</p>
-        </section>
+        <div>
+    
+            <asp:GridView ID="GridView1" runat="server">
+            </asp:GridView>
+    
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <br />
+    
+        </div>
     </form>
 </body>
 </html>

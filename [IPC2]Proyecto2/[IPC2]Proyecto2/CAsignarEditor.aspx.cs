@@ -83,6 +83,7 @@ namespace _IPC2_Proyecto2
             {
                 c.AsignarCaso(idCaso,trabNuevo);
                 c.crearHistorial(idCaso,"",DropDownList2.Text,"","","","","",Session["usuario"].ToString());
+                c.crearNotificacion(DropDownList2.Text,"Se te ha asignado al caso " + caso);
             }
             else
             {

@@ -63,6 +63,7 @@
                 </div>
                 <div class="6u$ 12u$(3)">
                     <ul class="actions fit small">
+                        <asp:Button class="button alt fit small" ID="Button1" runat="server" OnClick="Button1_Click" Text="Casos del proyecto" />
                         </ul>
                 </div>
             </div>

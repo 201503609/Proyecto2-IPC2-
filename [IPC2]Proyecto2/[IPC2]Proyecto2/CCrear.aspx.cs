@@ -55,6 +55,7 @@ namespace _IPC2_Proyecto2
                                 c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
                                 int idCaso = c.obtenerIdCaso(txtTitulo.Text);
                                 c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, txtEstado.Text, txtSituacion.Text, txtCategoria.Text, txtPrioridad.Text, txtFechaEnt.Text, Session["usuario"].ToString());
+                                c.crearNotificacion(DropDownList2.Text, "Se te ha asignado al caso " + txtTitulo.Text);
                             }
                             else
                             {
@@ -76,6 +77,7 @@ namespace _IPC2_Proyecto2
                                 c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
                                 int idCaso = c.obtenerIdCaso(txtTitulo.Text);
                                 c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, txtEstado.Text, txtSituacion.Text, txtCategoria.Text, txtPrioridad.Text, txtFechaEnt.Text, Session["usuario"].ToString());
+                                c.crearNotificacion(DropDownList2.Text, "Se te ha asignado al caso " + txtTitulo.Text);
                             }
                             else
                             {

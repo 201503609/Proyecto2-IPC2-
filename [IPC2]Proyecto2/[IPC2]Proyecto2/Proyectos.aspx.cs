@@ -68,5 +68,10 @@ namespace _IPC2_Proyecto2
         {
             Response.Redirect("PAsignados.aspx");
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PCasosTotales.aspx");
+        }
     }
 }

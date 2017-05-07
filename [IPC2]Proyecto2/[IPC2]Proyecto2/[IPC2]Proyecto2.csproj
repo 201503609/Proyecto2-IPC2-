@@ -83,6 +83,7 @@
     <Content Include="Inicio2.aspx" />
     <Content Include="ModificarPerfilU.aspx" />
     <Content Include="ModificarU.aspx" />
+    <Content Include="NotificacionesU.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -97,6 +98,7 @@
     <Content Include="PAsignados.aspx" />
     <Content Include="PAsignarGerente.aspx" />
     <Content Include="PAsignarTrabajador.aspx" />
+    <Content Include="PCasosTotales.aspx" />
     <Content Include="PCrear.aspx" />
     <Content Include="PEliminar.aspx" />
     <Content Include="PModificar.aspx" />
@@ -234,6 +236,13 @@
     <Compile Include="ModificarU.aspx.designer.cs">
       <DependentUpon>ModificarU.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NotificacionesU.aspx.cs">
+      <DependentUpon>NotificacionesU.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NotificacionesU.aspx.designer.cs">
+      <DependentUpon>NotificacionesU.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PAsignados.aspx.cs">
       <DependentUpon>PAsignados.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -254,6 +263,13 @@
     </Compile>
     <Compile Include="PAsignarTrabajador.aspx.designer.cs">
       <DependentUpon>PAsignarTrabajador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PCasosTotales.aspx.cs">
+      <DependentUpon>PCasosTotales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PCasosTotales.aspx.designer.cs">
+      <DependentUpon>PCasosTotales.aspx</DependentUpon>
     </Compile>
     <Compile Include="PCrear.aspx.cs">
       <DependentUpon>PCrear.aspx</DependentUpon>
