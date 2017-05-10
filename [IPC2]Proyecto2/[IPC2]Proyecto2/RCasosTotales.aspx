@@ -40,19 +40,19 @@
                 </SelectParameters>
             </asp:SqlDataSource>
             Filtros<br />
-            Categoria:<asp:RadioButton ID="RadioButton1" runat="server" />
+            Categoria:<asp:RadioButton ID="RadioButton1" runat="server" Text="Usar" />
             <br />
             <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="nombreCate" DataValueField="idCategoria">
             </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BugTrackerConnectionString %>" SelectCommand="SELECT [idCategoria], [nombreCate] FROM [Categoria]"></asp:SqlDataSource>
             <br />
-            Estado:<asp:RadioButton ID="RadioButton2" runat="server" />
+            Estado:<asp:RadioButton ID="RadioButton2" runat="server" Text="Usar" />
             <br />
             <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="nombreEstado" DataValueField="idEstado">
             </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:BugTrackerConnectionString %>" SelectCommand="SELECT [idEstado], [nombreEstado] FROM [Estado]"></asp:SqlDataSource>
             <br />
-            Situacion:<asp:RadioButton ID="RadioButton3" runat="server" />
+            Situacion:<asp:RadioButton ID="RadioButton3" runat="server" Text="Usar" />
             <br />
             <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource4" DataTextField="nombreSituacion" DataValueField="idSituacion">
             </asp:DropDownList>
