@@ -30,6 +30,9 @@
         </header>
 
         <div class="6u 12u$(3)">
+            ProjectID:&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtProject" placeholder="PROJECTID" runat="server"></asp:TextBox>
+            <br />
             Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtNombre" runat="server" placeholder="Nombre" ></asp:TextBox>
             <br />

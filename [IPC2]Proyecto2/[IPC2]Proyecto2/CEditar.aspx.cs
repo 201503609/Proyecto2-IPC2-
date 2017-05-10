@@ -239,7 +239,7 @@ namespace _IPC2_Proyecto2
         private int sit(string text)
         {
             //RESUELTO
-            if (text == "Listo para Pruebas")
+            if (text == "Listo para pruebas")
             {
                 return 1;
             }

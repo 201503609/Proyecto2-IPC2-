@@ -48,7 +48,9 @@
             Actual Situacion:&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtSituacion" placeholder="Actual Situacion" runat="server" Enabled="False"></asp:TextBox>
             <br />
             Nueva Situacion:&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtNueva" placeholder="Nueva Situacion" runat="server"></asp:TextBox>
+            <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="nombreSituacion" DataValueField="nombreSituacion">
+            </asp:DropDownList>
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BugTrackerConnectionString %>" SelectCommand="SELECT [nombreSituacion] FROM [Situacion]"></asp:SqlDataSource>
 
         </div>
         <div class="6u 12u$(small)">

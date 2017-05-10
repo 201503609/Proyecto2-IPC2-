@@ -30,7 +30,7 @@ namespace _IPC2_Proyecto2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string correo, contraseña, nombre, apellido, direccion, fecha;
+            string correo, contraseña, nombre, apellido, direccion, fecha, work;
             int telefono;
             correo = TextBox1.Text;
             contraseña = TextBox2.Text;
@@ -38,8 +38,9 @@ namespace _IPC2_Proyecto2
             apellido = TextBox4.Text;
             fecha = TextBox5.Text;
             direccion = TextBox6.Text;
+            work = TextBox8.Text;
             telefono = Int32.Parse(TextBox7.Text);
-            u.modificarUsuario(correo, contraseña, nombre, apellido, fecha, direccion, telefono, Session["usuario"].ToString());
+            u.modificarUsuario(correo, contraseña, nombre, apellido, fecha, direccion, telefono, Session["usuario"].ToString(),work);
             Response.Redirect("ModificarPerfilU.aspx");
         }
 
@@ -72,6 +73,9 @@ namespace _IPC2_Proyecto2
                         break;
                     case 6:
                         TextBox7.Text = item;
+                        break;
+                    case 7:
+                        TextBox8.Text = item;
                         break;
                 }
                 i++;

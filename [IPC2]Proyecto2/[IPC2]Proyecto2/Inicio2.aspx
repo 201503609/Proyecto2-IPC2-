@@ -31,6 +31,7 @@
                     <li><a href="Proyectos.aspx">Proyectos</a></li>
                     <li><a href="Casos.aspx">Casos</a></li>
                     <li><a href="NotificacionesU.aspx">Notificaciones</a></li>
+                    <li><a href="Reportes.aspx">Reportes</a></li>
                     <li><asp:Button  class="button special" ID="btn_cerrar" runat="server" OnClick="Button2_Click1" Text="Cerrar Sesión" /></li>
                 </ul>
             </nav>

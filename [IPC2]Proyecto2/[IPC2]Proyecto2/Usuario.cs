@@ -21,12 +21,12 @@ namespace _IPC2_Proyecto2
         DataTable tblData = new DataTable();
         
         //Ya funciona
-        public void crearUsuario(string correo,string contraseña,string nombre,string apellido, string fecha, string direccion, int telefono, int rol)
+        public void crearUsuario(string correo,string contraseña,string nombre,string apellido, string fecha, string direccion, int telefono, int rol,string workid)
         {
             try
             {
                 cn = Conexion.conectar();
-                cmd = new SqlCommand("INSERT INTO Usuarios Values (@correo,@contraseña,@nombre,@apellido,@fecha_nacimiento,@direccion,@telefono,@estado,@rol)", cn.getSqlConnection());
+                cmd = new SqlCommand("INSERT INTO Usuarios Values (@correo,@contraseña,@nombre,@apellido,@fecha_nacimiento,@direccion,@telefono,@estado,@rol,@WORKERID)", cn.getSqlConnection());
                 cmd.Parameters.AddWithValue("@correo",correo);
                 cmd.Parameters.AddWithValue("@contraseña", contraseña);
                 cmd.Parameters.AddWithValue("@nombre", nombre);
@@ -36,6 +36,7 @@ namespace _IPC2_Proyecto2
                 cmd.Parameters.AddWithValue("@telefono", telefono);
                 cmd.Parameters.AddWithValue("@estado", "activo");
                 cmd.Parameters.AddWithValue("@rol", rol);
+                cmd.Parameters.AddWithValue("@WORKERID", workid);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se ha creado el usuario: " + correo);
             }
@@ -141,12 +142,12 @@ namespace _IPC2_Proyecto2
             }
         }
         //Ya funciona
-        public void modificarUsuario(string correo, string contraseña, string nombre, string apellido, string fecha, string direccion, int telefono, string usuario)
+        public void modificarUsuario(string correo, string contraseña, string nombre, string apellido, string fecha, string direccion, int telefono, string usuario,string workid)
         {
             try
             {
                 cn = Conexion.conectar();
-                cmd = new SqlCommand("UPDATE Usuarios SET correo = @correo, contraseña = @contraseña, nombre = @nombre, apellido = @apellido, fecha_nacimiento = @fecha_nacimiento, direccion = @direccion, telefono = @telefono WHERE correo = @usuario", cn.getSqlConnection());
+                cmd = new SqlCommand("UPDATE Usuarios SET correo = @correo, contraseña = @contraseña, nombre = @nombre, apellido = @apellido, fecha_nacimiento = @fecha_nacimiento, direccion = @direccion, telefono = @telefono, WORKERID = @workerid WHERE correo = @usuario", cn.getSqlConnection());
                 cmd.Parameters.AddWithValue("@correo", correo);
                 cmd.Parameters.AddWithValue("@contraseña", contraseña);
                 cmd.Parameters.AddWithValue("@nombre", nombre);
@@ -155,6 +156,7 @@ namespace _IPC2_Proyecto2
                 cmd.Parameters.AddWithValue("@direccion", direccion);
                 cmd.Parameters.AddWithValue("@telefono", telefono);
                 cmd.Parameters.AddWithValue("@usuario", usuario);
+                cmd.Parameters.AddWithValue("@workerid", workid);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se logro modificar el usuario: " + correo);
             }
@@ -179,7 +181,7 @@ namespace _IPC2_Proyecto2
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    string co, con, nom, ape, fecha, direc,tel;
+                    string co, con, nom, ape, fecha, direc,tel, wor;
                     co = Convert.ToString(dr["correo"]);
                     con = Convert.ToString(dr["contraseña"]);
                     nom = Convert.ToString(dr["nombre"]);
@@ -187,6 +189,7 @@ namespace _IPC2_Proyecto2
                     fecha = Convert.ToString(dr["fecha_nacimiento"]);
                     direc = Convert.ToString(dr["direccion"]);
                     tel = Convert.ToString(dr["telefono"]);
+                    wor = Convert.ToString(dr["WORKERID"]);
                     //--------------------------------------------
                     datos.Add(co);
                     datos.Add(con);
@@ -195,6 +198,7 @@ namespace _IPC2_Proyecto2
                     datos.Add(fecha);
                     datos.Add(direc);
                     datos.Add(tel);
+                    datos.Add(wor);
                 }
                 return datos;
                 cn.finalizar();
@@ -408,6 +412,132 @@ namespace _IPC2_Proyecto2
             {
                 cn.finalizar();
             }
+        }
+        //---------nueva implementacion fase 3
+        //Ya funciona
+        public int ObtenerRolWorker(string worker, string contraseña)
+        {
+            try
+            {
+                Console.WriteLine(worker);
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("select * from Usuarios WHERE WORKERID='" + worker + "' AND contraseña = '" + contraseña + "' AND estado = 'activo'", cn.getSqlConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    string id;
+                    id = Convert.ToString(dr["rol"]);
+                    pre = Int32.Parse(id);
+                }
+                else
+                {
+                    return 0;
+                }
+                cn.finalizar();
+                dr.Close();
+
+                return pre;
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + sqe.ToString());
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + ex.ToString());
+                return 0;
+            }
+            finally
+            {
+                cn.finalizar();
+            }
+
+
+        }
+        //Ya funciona
+        public string ObtenerCorreoWorker(string worker)
+        {
+            try
+            {
+                Console.WriteLine(usuario);
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("select * from Usuarios WHERE WORKERID='" + worker + "'", cn.getSqlConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    string correo;
+                    correo = Convert.ToString(dr["correo"]);
+                    return correo;
+                }
+                else
+                {
+                    return "";
+                }
+                cn.finalizar();
+                dr.Close();
+
+                return "";
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + sqe.ToString());
+                return "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + ex.ToString());
+                return "";
+            }
+            finally
+            {
+                cn.finalizar();
+            }
+
+
+        }
+        //Ya funciona
+        public int ObtenerIdWorker(string worker)
+        {
+            try
+            {
+                int iid = 0;
+                Console.WriteLine(worker);
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("select * from Usuarios WHERE WORKERID ='" + worker + "'", cn.getSqlConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+
+                    string id;
+                    id = Convert.ToString(dr["idUsuario"]);
+                    iid = Int32.Parse(id);
+                }
+                else
+                {
+                    return 0;
+                }
+                cn.finalizar();
+                dr.Close();
+                MessageBox.Show("El id de " + worker + " es " + iid.ToString());
+                return iid;
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + sqe.ToString());
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro obtener el id por: " + ex.ToString());
+                return 0;
+            }
+            finally
+            {
+                cn.finalizar();
+            }
+
+
         }
     }
 }

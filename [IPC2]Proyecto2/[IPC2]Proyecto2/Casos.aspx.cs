@@ -51,8 +51,8 @@ namespace _IPC2_Proyecto2
         //Cerrar Caso
         protected void Button5_Click1(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion en mantenimiento");
-            //Response.Redirect("CCerrar.aspx");
+            //MessageBox.Show("Funcion en mantenimiento");
+            Response.Redirect("CCerrar.aspx");
         }
         //Asignar Trabajador
         protected void Button6_Click1(object sender, EventArgs e)

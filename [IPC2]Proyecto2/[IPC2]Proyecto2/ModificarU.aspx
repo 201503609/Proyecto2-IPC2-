@@ -42,6 +42,10 @@
         </div>
         <div class="6u$ 12u$(3)">
 
+            WorkerId:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtWorker" placeholder="WorkerID" runat="server"></asp:TextBox>
+            <br />
+
             Correo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <asp:TextBox ID="txtCorreo" placeholder="Correo" runat="server"></asp:TextBox>

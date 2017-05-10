@@ -21,17 +21,18 @@ namespace _IPC2_Proyecto2
         DataTable tblData = new DataTable();
 
         //Ya Funciona
-        public void crearProyecto(string nombre, string fechaIn, string fechaFin, string presupuesto, string duracion)
+        public void crearProyecto(string nombre, string fechaIn, string fechaFin, string presupuesto, string duracion, string project)
         {
             try
             {
                 cn = Conexion.conectar();
-                cmd = new SqlCommand("INSERT INTO Proyectos VALUES(@nombre,@fecha_inicio,@fecha_fin,@presupuesto,@duracion,@estado)", cn.getSqlConnection());
+                cmd = new SqlCommand("INSERT INTO Proyectos VALUES(@nombre,@fecha_inicio,@fecha_fin,@presupuesto,@duracion,@estado,@PROJECTID)", cn.getSqlConnection());
                 cmd.Parameters.AddWithValue("@nombre",nombre);
                 cmd.Parameters.AddWithValue("@fecha_inicio", fechaIn);
                 cmd.Parameters.AddWithValue("@fecha_fin", fechaFin);
                 cmd.Parameters.AddWithValue("@presupuesto", presupuesto);
                 cmd.Parameters.AddWithValue("@duracion", duracion);
+                cmd.Parameters.AddWithValue("@PROJECTID", project);
                 cmd.Parameters.AddWithValue("@estado", "Activo");
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se ha creado el proyecto: " + nombre);
@@ -46,17 +47,18 @@ namespace _IPC2_Proyecto2
             }
         }
         //Ya Funciona
-        public void modificarProyecto(string nombre, string fechaIn, string fechaFin, string presupuesto, string duracion, string name)
+        public void modificarProyecto(string nombre, string fechaIn, string fechaFin, string presupuesto, string duracion, string name, string project)
         {
             try
             {
                 cn = Conexion.conectar();
-                cmd = new SqlCommand("UPDATE Proyectos SET nombre = @nombre, fecha_inicio = @fecha_inicio, fecha_fin = @fecha_fin, presupuesto = @presupuesto, duracion = @duracion WHERE nombre = @name", cn.getSqlConnection());
+                cmd = new SqlCommand("UPDATE Proyectos SET nombre = @nombre, fecha_inicio = @fecha_inicio, fecha_fin = @fecha_fin, presupuesto = @presupuesto, duracion = @duracion, PROJECTID = @project WHERE nombre = @name", cn.getSqlConnection());
                 cmd.Parameters.AddWithValue("@nombre", nombre);
                 cmd.Parameters.AddWithValue("@fecha_inicio", fechaIn);
                 cmd.Parameters.AddWithValue("@fecha_fin", fechaFin);
                 cmd.Parameters.AddWithValue("@presupuesto", presupuesto);
                 cmd.Parameters.AddWithValue("@duracion", duracion);
+                cmd.Parameters.AddWithValue("@project", project);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se logro modificar el proyecto: " + nombre);
@@ -82,18 +84,20 @@ namespace _IPC2_Proyecto2
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    string nom, feIn, feFi, presu, dura;
+                    string nom, feIn, feFi, presu, dura,pro;
                     nom = Convert.ToString(dr["nombre"]);
                     feIn = Convert.ToString(dr["fecha_inicio"]);
                     feFi = Convert.ToString(dr["fecha_fin"]);
                     presu = Convert.ToString(dr["presupuesto"]);
                     dura = Convert.ToString(dr["duracion"]);
+                    pro = Convert.ToString(dr["PROJECTID"]);
                     //--------------------------------------------
                     datos.Add(nom);
                     datos.Add(feIn);
                     datos.Add(feFi);
                     datos.Add(presu);
                     datos.Add(dura);
+                    datos.Add(pro);
                 }
                 return datos;
                 cn.finalizar();
@@ -324,45 +328,85 @@ namespace _IPC2_Proyecto2
             }
         }
 
-
-        //------PARA LOS REPORTES----------------------------------------------
-        //Todos los proyectos
-        public ArrayList obtenerProyectos()
+        //----------------Implementacion fase3
+        //Ya Funciona
+        public int ObtenerIdProject(string project)
         {
             try
             {
-                ArrayList datos = new ArrayList();
                 cn = Conexion.conectar();
-                cmd = new SqlCommand("SELECT * FROM Proyectos WHERE estado ='Activo'", cn.getSqlConnection());
+                cmd = new SqlCommand("select * from Proyectos WHERE PROJECTID='" + project + "'", cn.getSqlConnection());
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    string nom, feIn, feFi, presu, dura;
-                    nom = Convert.ToString(dr["nombre"]);
-                    //--------------------------------------------
-                    datos.Add(nom);
+                    string id;
+                    id = Convert.ToString(dr["idProyecto"]);
+                    pre = Int32.Parse(id);
                 }
-                return datos;
+                else
+                {
+                    return 0;
+                }
                 cn.finalizar();
                 dr.Close();
+
+                return pre;
             }
             catch (SqlException sqe)
             {
-                MessageBox.Show("no se logro obtener datos del proyecto por: " + sqe.ToString());
-                return null;
+                MessageBox.Show("no se logro obtener el id por: " + sqe.ToString());
+                return 0;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("no se logro obtener datos del proyecto por: " + ex.ToString());
-                return null;
+                MessageBox.Show("no se logro obtener el id por: " + ex.ToString());
+                return 0;
+            }
+            finally
+            {
+                cn.finalizar();
+            }
+
+
+        }
+        //Ya funciona
+        public string obtenerHoraFecha()
+        {
+            try
+            {
+                cn = Conexion.conectar();
+                cmd = new SqlCommand("select GETDATE() as Fecha", cn.getSqlConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    string fecha;
+                    fecha = Convert.ToString(dr["Fecha"]);
+                    return fecha;
+                }
+                else
+                {
+                    return "";
+                }
+                cn.finalizar();
+                dr.Close();
+
+                return "";
+            }
+            catch (SqlException sqe)
+            {
+                MessageBox.Show("no se logro obtener la fecha por: " + sqe.ToString());
+                return "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no se logro obtener la fecha por: " + ex.ToString());
+                return "";
             }
             finally
             {
                 cn.finalizar();
             }
         }
-        //De un usuario
 
-        //Actividades de todos los proyectos
     }
 }

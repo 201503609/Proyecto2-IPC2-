@@ -49,6 +49,9 @@ namespace _IPC2_Proyecto2
                     case 4:
                         txtDuracion.Text = item;
                         break;
+                    case 5:
+                        txtProject.Text = item;
+                        break;
                 }
 
                 i++;
@@ -59,7 +62,7 @@ namespace _IPC2_Proyecto2
         {
             Proyecto p = new Proyecto();
             string name = DropDownList1.Text;
-            p.modificarProyecto(txtNombre.Text,txtFechaIn.Text,txtFechaFin.Text,txtPresupuesto.Text,txtDuracion.Text,name);
+            p.modificarProyecto(txtNombre.Text,txtFechaIn.Text,txtFechaFin.Text,txtPresupuesto.Text,txtDuracion.Text,name,txtProject.Text);
         }
     }
 }

@@ -70,6 +70,7 @@
     <Content Include="CambiarContra.aspx" />
     <Content Include="CambiarRol.aspx" />
     <Content Include="CAsignarEditor.aspx" />
+    <Content Include="CCerrar.aspx" />
     <Content Include="CConsultar.aspx" />
     <Content Include="CCrear.aspx" />
     <Content Include="CEditar.aspx" />
@@ -98,12 +99,19 @@
     <Content Include="PAsignados.aspx" />
     <Content Include="PAsignarGerente.aspx" />
     <Content Include="PAsignarTrabajador.aspx" />
+    <Content Include="PCargaMasiva.aspx" />
     <Content Include="PCasosTotales.aspx" />
     <Content Include="PCrear.aspx" />
     <Content Include="PEliminar.aspx" />
     <Content Include="PModificar.aspx" />
     <Content Include="Proyectos.aspx" />
+    <Content Include="RBugs.aspx" />
+    <Content Include="RCasosAsignados.aspx" />
+    <Content Include="RCasosTotales.aspx" />
+    <Content Include="RContadoresCasos.aspx" />
     <Content Include="RecordarContra.aspx" />
+    <Content Include="Reportes.aspx" />
+    <Content Include="RProyectosTotales.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -136,6 +144,13 @@
     </Compile>
     <Compile Include="Casos.aspx.designer.cs">
       <DependentUpon>Casos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CCerrar.aspx.cs">
+      <DependentUpon>CCerrar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CCerrar.aspx.designer.cs">
+      <DependentUpon>CCerrar.aspx</DependentUpon>
     </Compile>
     <Compile Include="CConsultar.aspx.cs">
       <DependentUpon>CConsultar.aspx</DependentUpon>
@@ -222,6 +237,7 @@
     <Compile Include="Inicio2.aspx.designer.cs">
       <DependentUpon>Inicio2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LeerArchivo.cs" />
     <Compile Include="ModificarPerfilU.aspx.cs">
       <DependentUpon>ModificarPerfilU.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -264,6 +280,13 @@
     <Compile Include="PAsignarTrabajador.aspx.designer.cs">
       <DependentUpon>PAsignarTrabajador.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PCargaMasiva.aspx.cs">
+      <DependentUpon>PCargaMasiva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PCargaMasiva.aspx.designer.cs">
+      <DependentUpon>PCargaMasiva.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PCasosTotales.aspx.cs">
       <DependentUpon>PCasosTotales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -301,12 +324,54 @@
     <Compile Include="Proyectos.aspx.designer.cs">
       <DependentUpon>Proyectos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RBugs.aspx.cs">
+      <DependentUpon>RBugs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RBugs.aspx.designer.cs">
+      <DependentUpon>RBugs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RCasosAsignados.aspx.cs">
+      <DependentUpon>RCasosAsignados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RCasosAsignados.aspx.designer.cs">
+      <DependentUpon>RCasosAsignados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RCasosTotales.aspx.cs">
+      <DependentUpon>RCasosTotales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RCasosTotales.aspx.designer.cs">
+      <DependentUpon>RCasosTotales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RContadoresCasos.aspx.cs">
+      <DependentUpon>RContadoresCasos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RContadoresCasos.aspx.designer.cs">
+      <DependentUpon>RContadoresCasos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RecordarContra.aspx.cs">
       <DependentUpon>RecordarContra.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RecordarContra.aspx.designer.cs">
       <DependentUpon>RecordarContra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RProyectosTotales.aspx.cs">
+      <DependentUpon>RProyectosTotales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RProyectosTotales.aspx.designer.cs">
+      <DependentUpon>RProyectosTotales.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuario.cs" />
     <Compile Include="Usuarios.aspx.cs">

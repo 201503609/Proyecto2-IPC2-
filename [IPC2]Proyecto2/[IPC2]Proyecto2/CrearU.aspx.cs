@@ -36,7 +36,7 @@ namespace _IPC2_Proyecto2
             {
                 if (rol == 1)
                 {
-                    u.crearUsuario(txtCorreo.Text, txtContraseña.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), Int32.Parse(txtRol.Text));
+                    u.crearUsuario(txtCorreo.Text, txtContraseña.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), Int32.Parse(txtRol.Text),txtWorkerId.Text);
                     Response.Redirect("CrearU.aspx");
                 }
                 else
@@ -48,7 +48,7 @@ namespace _IPC2_Proyecto2
             {
                 if (rol == 1 || rol == 2)
                 {
-                    u.crearUsuario(txtCorreo.Text, txtContraseña.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), Int32.Parse(txtRol.Text));
+                    u.crearUsuario(txtCorreo.Text, txtContraseña.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), Int32.Parse(txtRol.Text),txtWorkerId.Text);
                     Response.Redirect("CrearU.aspx");
                 }
                 else

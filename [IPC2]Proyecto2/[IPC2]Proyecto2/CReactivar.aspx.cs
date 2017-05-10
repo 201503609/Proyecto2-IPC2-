@@ -55,7 +55,7 @@ namespace _IPC2_Proyecto2
             int idCaso = c.obtenerIdCaso(caso);
             int estado, situacion;
             estado = 4;
-            situacion = sit(TextBox1.Text);
+            situacion = sit(DropDownList2.Text);
 
 
             if (estado == 1 || estado == 4)
@@ -63,7 +63,7 @@ namespace _IPC2_Proyecto2
                 if (situacion == 9 || situacion == 10 || situacion == 11 || situacion == 12 || situacion == 13)
                 {
                     c.reactivarCaso(idCaso,situacion);
-                    c.crearHistorial(idCaso, "", "", "Reactivado", TextBox1.Text, "", "", "", Session["usuario"].ToString());
+                    c.crearHistorial(idCaso, "", "", "Reactivado", DropDownList2.Text, "", "", "", Session["usuario"].ToString());
                 }
                 else
                 {//9 al 13
@@ -75,7 +75,7 @@ namespace _IPC2_Proyecto2
                 if (situacion >= 1 || situacion <= 8)
                 {
                     c.reactivarCaso(idCaso, situacion);
-                    c.crearHistorial(idCaso, "", "", "Reactivado", TextBox1.Text, "", "", "", Session["usuario"].ToString());
+                    c.crearHistorial(idCaso, "", "", "Reactivado", DropDownList2.Text, "", "", "", Session["usuario"].ToString());
                 }
                 else
                 {//1 al 8
@@ -88,7 +88,7 @@ namespace _IPC2_Proyecto2
         private int sit(string text)
         {
             //RESUELTO
-            if (text == "Listo para Pruebas")
+            if (text == "Listo para pruebas")
             {
                 return 1;
             }
@@ -145,6 +145,81 @@ namespace _IPC2_Proyecto2
             else
             {
                 MessageBox.Show("Estado no valido o no existente");
+                return 0;
+            }
+        }
+
+        private int est(string text)
+        {
+            if (text == "Activo")
+            {
+                return 1;
+            }
+            else if (text == "Resuelto")
+            {
+                return 2;
+            }
+            else if (text == "Cerrado")
+            {
+                return 3;
+            }
+            else if (text == "Reactivado")
+            {
+                return 4;
+            }
+            else
+            {
+                MessageBox.Show("Estado no valido o no existente");
+                return 0;
+            }
+        }
+
+        private int cate(string cat)
+        {
+            if (cat == "Bug")
+            {
+                return 1;
+            }
+            else if (cat == "Mejora")
+            {
+                return 2;
+            }
+            else if (cat == "Investigacion" || cat == "Investigación")
+            {
+                return 3;
+            }
+            else if (cat == "Actividad")
+            {
+                return 4;
+            }
+            else
+            {
+                MessageBox.Show("Categoria no valida o no existente");
+                return 0;
+            }
+        }
+
+        private int priori(string pri)
+        {
+            if (pri == "Critica" || pri == "Crítica")
+            {
+                return 1;
+            }
+            else if (pri == "Debe arreglarse")
+            {
+                return 2;
+            }
+            else if (pri == "Arreglar si hay tiempo")
+            {
+                return 3;
+            }
+            else if (pri == "No arreglar")
+            {
+                return 4;
+            }
+            else
+            {
+                MessageBox.Show("Prioridad no valida o no existente");
                 return 0;
             }
         }

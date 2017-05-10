@@ -26,7 +26,7 @@ namespace _IPC2_Proyecto2
         protected void Button1_Click(object sender, EventArgs e)
         {
             Proyecto p = new Proyecto();
-            p.crearProyecto(txtNombre.Text,txtFechaIn.Text,txtFechaFin.Text,txtPresupuesto.Text,txtDuracion.Text);
+            p.crearProyecto(txtNombre.Text,txtFechaIn.Text,txtFechaFin.Text,txtPresupuesto.Text,txtDuracion.Text,txtProject.Text);
         }
     }
 }

@@ -39,7 +39,6 @@
             <asp:GridView ID="GridView1" runat="server">
             </asp:GridView>
     
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             <br />
     
         </div>

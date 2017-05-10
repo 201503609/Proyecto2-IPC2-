@@ -29,6 +29,10 @@
         </header>
         <div class="6u 12u$(4)">
 
+            <br />
+            <asp:TextBox ID="txtWorkerId" placeholder="WORKERID" runat="server"></asp:TextBox>
+            <br />
+
             <asp:TextBox ID="txtCorreo" placeholder="Correo" runat="server"></asp:TextBox>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br />

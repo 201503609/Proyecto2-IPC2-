@@ -21,20 +21,33 @@ namespace _IPC2_Proyecto2
         protected void Button1_Click1(object sender, EventArgs e)
         {
             Usuario u = new Usuario();
+            string usu = "";
             string usuario = txt_nom.Text;
             string contraseña = txt_contra.Text;
             int rol = 0;
-            rol = u.ObtenerRol(usuario,contraseña);
+            rol = u.ObtenerRolWorker(usuario,contraseña);
             if (rol != 0)
             {
+                usu = u.ObtenerCorreoWorker(usuario);
                 Session["rol"] = rol;
                 Session["pass"] = contraseña;
-                Session["usuario"] = usuario;
+                Session["usuario"] = usu;
                 Response.Redirect("Inicio2.aspx");
             }
             else
             {
-                MessageBox.Show("Revisar datos");
+                rol = u.ObtenerRol(usuario, contraseña);
+                if (rol != 0)
+                {
+                    Session["rol"] = rol;
+                    Session["pass"] = contraseña;
+                    Session["usuario"] = usuario;
+                    Response.Redirect("Inicio2.aspx");
+                }
+                else
+                {
+                    MessageBox.Show("Revisar datos");
+                }
             }
         }
 

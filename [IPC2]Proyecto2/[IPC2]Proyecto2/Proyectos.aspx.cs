@@ -22,6 +22,7 @@ namespace _IPC2_Proyecto2
                     btnModificar.Visible = false;
                     btnRol.Visible = false;
                     btnPerfil.Visible = false;
+                    btnCarga.Visible = false;
                 }
             }
             else
@@ -72,6 +73,11 @@ namespace _IPC2_Proyecto2
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("PCasosTotales.aspx");
+        }
+
+        protected void btnCarga_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PCargaMasiva.aspx");
         }
     }
 }

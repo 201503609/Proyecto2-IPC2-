@@ -14,7 +14,7 @@ namespace _IPC2_Proyecto2
         {
             if (Session["rol"] != null || Session["pass"] != null || Session["usuario"] != null)
             {
-                MessageBox.Show("Tiene permisos validos para entrar");
+                
             }
             else
             {

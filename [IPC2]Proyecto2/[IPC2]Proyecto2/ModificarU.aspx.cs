@@ -55,6 +55,9 @@ namespace _IPC2_Proyecto2
                     case 6:
                         txtTelefono.Text = item;
                         break;
+                    case 7:
+                        txtWorker.Text = item;
+                        break;
                 }
 
                 i++;
@@ -76,7 +79,7 @@ namespace _IPC2_Proyecto2
             {
                 if (rolLogueado == 1)
                 {
-                    u.modificarUsuario(txtCorreo.Text, txtContra.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), user);
+                    u.modificarUsuario(txtCorreo.Text, txtContra.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), user,txtWorker.Text);
                     Response.Redirect("ModificarU.aspx");
                 }
                 else
@@ -88,7 +91,7 @@ namespace _IPC2_Proyecto2
             {
                 if (rolLogueado == 1 || rolLogueado == 2)
                 {
-                    u.modificarUsuario(txtCorreo.Text, txtContra.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), user);
+                    u.modificarUsuario(txtCorreo.Text, txtContra.Text, txtNombre.Text, txtApellido.Text, txtFecha.Text, txtDireccion.Text, Int32.Parse(txtTelefono.Text), user, txtWorker.Text);
                     Response.Redirect("ModificarU.aspx");
                 }
                 else

@@ -28,11 +28,11 @@ namespace _IPC2_Proyecto2
             Caso c = new Caso();
             Proyecto p = new Proyecto();
             Usuario u = new Usuario();
-            int categoria, prioridad, estado, situacion,proyecto,creador,editor;
-            categoria = cate(txtCategoria.Text);
-            prioridad = priori(txtPrioridad.Text); 
-            estado = est(txtEstado.Text);
-            situacion = sit(txtSituacion.Text);
+            int categoria, prioridad, estado, situacion = 0,proyecto,creador,editor;
+            categoria = cate(DropDownList5.Text);
+            prioridad = priori(DropDownList6.Text); 
+            estado = est(DropDownList3.Text);
+            situacion = sit(DropDownList7.Text);
             proyecto = p.ObtenerId(DropDownList1.Text);
             editor = u.ObtenerId(DropDownList2.Text);
             creador = u.ObtenerId(Session["usuario"].ToString());
@@ -54,7 +54,7 @@ namespace _IPC2_Proyecto2
                             {
                                 c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
                                 int idCaso = c.obtenerIdCaso(txtTitulo.Text);
-                                c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, txtEstado.Text, txtSituacion.Text, txtCategoria.Text, txtPrioridad.Text, txtFechaEnt.Text, Session["usuario"].ToString());
+                                c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, DropDownList3.Text, DropDownList7.Text, DropDownList5.Text, DropDownList6.Text, txtFechaEnt.Text, Session["usuario"].ToString());
                                 c.crearNotificacion(DropDownList2.Text, "Se te ha asignado al caso " + txtTitulo.Text);
                             }
                             else
@@ -76,7 +76,7 @@ namespace _IPC2_Proyecto2
                             {
                                 c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
                                 int idCaso = c.obtenerIdCaso(txtTitulo.Text);
-                                c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, txtEstado.Text, txtSituacion.Text, txtCategoria.Text, txtPrioridad.Text, txtFechaEnt.Text, Session["usuario"].ToString());
+                                c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, DropDownList3.Text, DropDownList7.Text, DropDownList5.Text, DropDownList6.Text, txtFechaEnt.Text, Session["usuario"].ToString());
                                 c.crearNotificacion(DropDownList2.Text, "Se te ha asignado al caso " + txtTitulo.Text);
                             }
                             else
@@ -103,7 +103,7 @@ namespace _IPC2_Proyecto2
         private int sit(string text)
         {
             //RESUELTO
-            if (text == "Listo para Pruebas")
+            if (text == "Listo para pruebas")
             {
                 return 1;
             }
@@ -148,7 +148,7 @@ namespace _IPC2_Proyecto2
             {
                 return 11;
             }
-            else if (text == "Arreglado")
+            else if (text == "Arregladoo")
             {
                 return 12;
             }
