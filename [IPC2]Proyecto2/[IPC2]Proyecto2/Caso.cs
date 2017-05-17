@@ -23,6 +23,7 @@ namespace _IPC2_Proyecto2
         //Ya funciona
         public void crearCaso(string nombre, string fechaLim, int creador, int proyecto, int avance, string descripcion, int editor, int estado, int situacion, int categoria, int prioridad, string fechaEntrega)
         {
+            MessageBox.Show("Se creara el caso : " + nombre );
             try
             {
                 cn = Conexion.conectar();

@@ -40,10 +40,10 @@ namespace _IPC2_Proyecto2
 
             //Cerrados
             cn = Conexion.conectar();
-            cmd = new SqlCommand("Select cambioPor as 'Usuario' , COUNT(H.cambioPor) as 'Casos Cerrados' " +
+            cmd = new SqlCommand("Select H.editadoPor as 'Usuario' , COUNT(H.cambioPor) as 'Casos Cerrados' " +
                                     " from Historial as H "+
                                     " Where H.estado = 'Cerrado' " +
-                                    " Group by cambioPor", cn.getSqlConnection());
+                                    " Group by editadoPor", cn.getSqlConnection());
             sda = new SqlDataAdapter(cmd);
             sda.Fill(tblData2);
             GridView2.DataSource = (tblData2);

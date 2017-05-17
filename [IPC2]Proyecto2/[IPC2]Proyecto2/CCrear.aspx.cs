@@ -38,64 +38,71 @@ namespace _IPC2_Proyecto2
             creador = u.ObtenerId(Session["usuario"].ToString());
 
             int proye = p.existenciaTrabajador(proyecto, editor);
-            if (proye != 0)
-            {
-                if (categoria == 0 || prioridad == 0 || estado == 0 || situacion == 0)
-                {
-                    MessageBox.Show("Revisar Valores");
-                }
-                else
-                {
-                    if (estado == 1 || estado == 4)
-                    {
-                        if (situacion == 9 || situacion == 10 || situacion == 11 || situacion == 12 || situacion == 13)
-                        {
-                            if (editor != 0)
-                            {
-                                c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
-                                int idCaso = c.obtenerIdCaso(txtTitulo.Text);
-                                c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, DropDownList3.Text, DropDownList7.Text, DropDownList5.Text, DropDownList6.Text, txtFechaEnt.Text, Session["usuario"].ToString());
-                                c.crearNotificacion(DropDownList2.Text, "Se te ha asignado al caso " + txtTitulo.Text);
-                            }
-                            else
-                            {
-                                MessageBox.Show("El usuario debe estar asignado al proyecto");
-                            }
 
-                        }
-                        else
-                        {//9 al 13
-                            MessageBox.Show("La situacion no es adecuada para el estado");
-                        }
-                    }
-                    else if (estado == 2)
-                    {
-                        if (situacion >= 1 || situacion <= 8)
-                        {
-                            if (editor != 0)
-                            {
-                                c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
-                                int idCaso = c.obtenerIdCaso(txtTitulo.Text);
-                                c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, DropDownList3.Text, DropDownList7.Text, DropDownList5.Text, DropDownList6.Text, txtFechaEnt.Text, Session["usuario"].ToString());
-                                c.crearNotificacion(DropDownList2.Text, "Se te ha asignado al caso " + txtTitulo.Text);
-                            }
-                            else
-                            {
-                                MessageBox.Show("El usuario debe estar asignado al proyecto");
-                            }
-                        }
-                        else
-                        {//1 al 8
-                            MessageBox.Show("La situacion no es adecuada para el estado");
-                        }
-                    }
-                }
 
-            }
-            else
-            {
-                MessageBox.Show("El trabajador debe estar asignado al proyecto");
-            }
+            c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
+            int idCaso = c.obtenerIdCaso(txtTitulo.Text);
+            c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, DropDownList3.Text, DropDownList7.Text, DropDownList5.Text, DropDownList6.Text, txtFechaEnt.Text, Session["usuario"].ToString());
+            c.crearNotificacion(DropDownList2.Text, "Se te ha asignado al caso " + txtTitulo.Text);
+
+            //if (proye != 0)
+            //{
+            //    if (categoria == 0 || prioridad == 0 || estado == 0 || situacion == 0)
+            //    {
+            //        MessageBox.Show("Revisar Valores");
+            //    }
+            //    else
+            //    {
+            //        if (estado == 1 || estado == 4)
+            //        {
+            //            if (situacion == 9 || situacion == 10 || situacion == 11 || situacion == 12 || situacion == 13)
+            //            {
+            //                if (editor != 0)
+            //                {
+            //                    c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
+            //                    int idCaso = c.obtenerIdCaso(txtTitulo.Text);
+            //                    c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, DropDownList3.Text, DropDownList7.Text, DropDownList5.Text, DropDownList6.Text, txtFechaEnt.Text, Session["usuario"].ToString());
+            //                    c.crearNotificacion(DropDownList2.Text, "Se te ha asignado al caso " + txtTitulo.Text);
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("El usuario debe estar asignado al proyecto");
+            //                }
+
+            //            }
+            //            else
+            //            {//9 al 13
+            //                MessageBox.Show("La situacion no es adecuada para el estado");
+            //            }
+            //        }
+            //        else if (estado == 2)
+            //        {
+            //            if (situacion >= 1 || situacion <= 8)
+            //            {
+            //                if (editor != 0)
+            //                {
+            //                    c.crearCaso(txtTitulo.Text, txtFechaLim.Text, creador, proyecto, Int32.Parse(txtAvance.Text), txtDesc.Text, editor, estado, situacion, categoria, prioridad, txtFechaEnt.Text);
+            //                    int idCaso = c.obtenerIdCaso(txtTitulo.Text);
+            //                    c.crearHistorial(idCaso, txtDesc.Text, DropDownList2.Text, DropDownList3.Text, DropDownList7.Text, DropDownList5.Text, DropDownList6.Text, txtFechaEnt.Text, Session["usuario"].ToString());
+            //                    c.crearNotificacion(DropDownList2.Text, "Se te ha asignado al caso " + txtTitulo.Text);
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("El usuario debe estar asignado al proyecto");
+            //                }
+            //            }
+            //            else
+            //            {//1 al 8
+            //                MessageBox.Show("La situacion no es adecuada para el estado");
+            //            }
+            //        }
+            //    }
+
+            //}
+            //else
+            //{
+            //    MessageBox.Show("El trabajador debe estar asignado al proyecto");
+            //}
 
            
         }
